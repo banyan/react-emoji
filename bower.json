@@ -1,0 +1,28 @@
+{
+  "name": "react-emoji",
+  "version": "0.0.1",
+  "authors": [
+    "Kohei Hasegawa <ameutau@gmail.com>"
+  ],
+  "description": "An emoji mixin for React",
+  "main": "dist/react-emoji.js",
+  "license": "MIT",
+  "moduleType": [
+    "amd",
+    "globals"
+  ],
+  "ignore": [
+    "LICENSE",
+    "*.md",
+    "coverage",
+    "**/.*",
+    "example",
+    "*.config.js",
+    "src",
+    "*.log",
+    "node_modules",
+    "bower_components",
+    "test",
+    "scripts"
+  ]
+}

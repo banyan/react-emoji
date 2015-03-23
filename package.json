@@ -1,0 +1,56 @@
+{
+  "name": "react-emoji",
+  "version": "0.0.1",
+  "description": "An emoji mixin for React",
+  "main": "dist/react-emoji.js",
+  "scripts": {
+    "start": "node example/server.js",
+    "build": "rm dist/react-emoji.js && webpack -p --config webpack.production.config.js",
+    "test": "PHANTOMJS_BIN=./node_modules/.bin/phantomjs ./node_modules/karma/bin/karma start karma.config.js",
+    "coveralls": "cat coverage/lcov.info | coveralls"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/banyan/react-emoji.git"
+  },
+  "keywords": [
+    "react",
+    "emoji"
+  ],
+  "author": "Kohei Hasegawa",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/banyan/react-emoji/issues"
+  },
+  "homepage": "https://github.com/banyan/react-emoji",
+  "devDependencies": {
+    "babel-core": "^4.7.8",
+    "babel-loader": "^4.1.0",
+    "coveralls": "^2.11.2",
+    "express": "^4.12.2",
+    "istanbul": "^0.3.7",
+    "istanbul-instrumenter-loader": "^0.1.2",
+    "karma": "^0.12.31",
+    "karma-coverage": "^0.2.7",
+    "karma-mocha": "^0.1.10",
+    "karma-phantomjs-launcher": "^0.1.4",
+    "karma-sinon-chai": "^0.3.0",
+    "karma-webpack": "^1.5.0",
+    "phantomjs": "^1.9.16",
+    "power-assert": "^0.10.2",
+    "react-hot-loader": "^1.2.3",
+    "webpack": "^1.7.2",
+    "webpack-dev-server": "^1.7.0",
+    "webpack-espower-loader": "^0.1.0"
+  },
+  "dependencies": {
+    "emoji-annotation-to-unicode": "^0.2.1",
+    "emoji-emoticon-to-unicode": "^0.1.0",
+    "escape-string-regexp": "^1.0.3",
+    "object-assign": "^2.0.0"
+  },
+  "files": [
+    "package.json",
+    "dist/react-emoji.js"
+  ]
+}
