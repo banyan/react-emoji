@@ -53,15 +53,15 @@ All options are optional.
   </tr>
   <tr>
     <th>emojitype</th>
-    <td>twemoji</td>
+    <td>"twemoji"</td>
   </tr>
   <tr>
     <th>width</th>
-    <td>20px</td>
+    <td>"20px"</td>
   </tr>
   <tr>
     <th>height</th>
-    <td>20px</td>
+    <td>"20px"</td>
   </tr>
   <tr>
     <th>host</th>
@@ -73,11 +73,11 @@ All options are optional.
   </tr>
   <tr>
     <th>ext</th>
-    <td>svg</td>
+    <td>"svg"</td>
   </tr>
   <tr>
     <th>tagName</th>
-    <td>img</td>
+    <td>"img"</td>
   </tr>
 </table>
 
