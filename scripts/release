@@ -8,6 +8,7 @@ fi
 OLD_VERSION=$1
 NEW_VERSION=$2
 
+rm -rf dist/
 npm run build
 gsed -i "s/\"version\": \"$OLD_VERSION\"/\"version\": \"$NEW_VERSION\"/g" package.json
 gsed -i "s/\"version\": \"$OLD_VERSION\"/\"version\": \"$NEW_VERSION\"/g" bower.json

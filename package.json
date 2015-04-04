@@ -5,7 +5,7 @@
   "main": "dist/react-emoji.js",
   "scripts": {
     "start": "node example/server.js",
-    "build": "rm dist/react-emoji.js && webpack -p --config webpack.production.config.js",
+    "build": "rm -rf dist/* && webpack -p --config webpack.production.config.js",
     "test": "PHANTOMJS_BIN=./node_modules/.bin/phantomjs ./node_modules/karma/bin/karma start karma.config.js",
     "coveralls": "cat coverage/lcov.info | coveralls"
   },
