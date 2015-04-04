@@ -15,7 +15,8 @@
   },
   "keywords": [
     "react",
-    "emoji"
+    "emoji",
+    "react-component"
   ],
   "author": "Kohei Hasegawa",
   "license": "MIT",
