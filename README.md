@@ -99,7 +99,7 @@ $ npm start # => http://0.0.0.0:8080
 ### Test
 
 ```
-$ npm run test
+$ npm test
 ```
 
 ## License
