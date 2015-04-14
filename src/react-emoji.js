@@ -3,7 +3,7 @@ import annotations        from 'emoji-annotation-to-unicode';
 import emoticons          from 'emoji-emoticon-to-unicode';
 import escapeStringRegexp from 'escape-string-regexp';
 import assign             from 'object-assign';
-import compact            from './utils/compact';
+import compact            from 'lodash.compact';
 
 let ReactEmoji = () => {
   let getEscapedKeys = (hash) => {
