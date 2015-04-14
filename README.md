@@ -46,40 +46,20 @@ let App = React.createClass({
 
 All options are optional.
 
-<table>
-  <tr>
-    <th>useEmoticon</th>
-    <td>true</td>
-  </tr>
-  <tr>
-    <th>emojitype</th>
-    <td>"twemoji"</td>
-  </tr>
-  <tr>
-    <th>width</th>
-    <td>"20px"</td>
-  </tr>
-  <tr>
-    <th>height</th>
-    <td>"20px"</td>
-  </tr>
-  <tr>
-    <th>host</th>
-    <td></td>
-  </tr>
-  <tr>
-    <th>path</th>
-    <td></td>
-  </tr>
-  <tr>
-    <th>ext</th>
-    <td>"svg"</td>
-  </tr>
-  <tr>
-    <th>tagName</th>
-    <td>"img"</td>
-  </tr>
-</table>
+Properties | Default value | Type
+---|---|---
+useEmoticon | true | Boolean
+emojiType | twemoji | String
+width | 20px | String
+height | 20px | String
+host | "" | String
+path | "" | String
+ext | svg | String
+tagName | img | String
+
+## Tips
+
+In tandem with [react-autolink](https://github.com/banyan/react-autolink).
 
 ## Development
 
