@@ -13,7 +13,7 @@ let ReactEmoji = () => {
   };
 
   let buildOptions = (options) => {
-    return {
+    let hash = {
       useEmoticon: options.useEmoticon === undefined ? true : false,
       emojiType: options.emojiType || 'twemoji',
       width: options.width || '20px',
@@ -23,6 +23,7 @@ let ReactEmoji = () => {
       ext: options.ext || 'svg',
       tagName: options.tagName || 'img',
     };
+    return options.className !== '' ? assign(hash, { className: options.className }) : hash;
   };
 
   let buildDelimiterAndDict = (useEmoticon) => {

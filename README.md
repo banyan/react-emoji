@@ -56,6 +56,7 @@ host | "" | String
 path | "" | String
 ext | svg | String
 tagName | img | String
+className | img | String
 
 ## Tips
 
