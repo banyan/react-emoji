@@ -69,8 +69,8 @@ describe("ReactAutolinkMixin", () => {
       assertDOM('<img width=\"20px\" height=\"20px\" src=\"https://twemoji.maxcdn.com/png/1f604.png\" data-reactid=\".0.0.$1\">', ':smile:', {ext: 'png'});
     });
 
-    it("reflects tagName when it's passed via options", () => {
-      assertDOM('<i width=\"20px\" height=\"20px\" src=\"https://twemoji.maxcdn.com/svg/1f604.svg\" data-reactid=\".0.0.$1\"></i>', ':smile:', {tagName: 'i'});
+    it("reflects className when it's passed via options", () => {
+      assertDOM('<img width=\"20px\" height=\"20px\" src=\"https://twemoji.maxcdn.com/svg/1f604.svg\" data-reactid=\".0.0.$1\" class=\"foo\">', ':smile:', {className: 'foo'});
     });
   });
 
