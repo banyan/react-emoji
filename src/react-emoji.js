@@ -20,8 +20,7 @@ let ReactEmoji = () => {
       height: options.height || '20px',
       host: options.host || '',
       path: options.path || '',
-      ext: options.ext || 'svg',
-      tagName: options.tagName || 'img',
+      ext: options.ext || 'svg'
     };
     return options.className !== '' ? assign(hash, { className: options.className }) : hash;
   };
@@ -72,7 +71,7 @@ let ReactEmoji = () => {
           let match = word.match(delimiter);
           if (match) {
             return React.createElement(
-              options.tagName,
+              'img',
               assign(options, {
                 key: index,
                 src: buildImageUrl(dict[getKey(match[0])], options)
