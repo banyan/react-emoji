@@ -14,7 +14,7 @@ let ReactEmoji = () => {
 
   let buildOptions = (options) => {
     let hash = {
-      useEmoticon: options.useEmoticon === undefined ? true : false,
+      useEmoticon: options.useEmoticon === false ? false : true,
       emojiType: options.emojiType || 'twemoji',
       width: options.width || '20px',
       height: options.height || '20px',

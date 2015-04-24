@@ -45,6 +45,26 @@ describe("ReactAutolinkMixin", () => {
   });
 
   context('options', () => {
+    context('emoticons', () => {
+      context('when useEmoticon option is not given', () => {
+        it("renders emoticon", () => {
+          assertDOM('<img width=\"20px\" height=\"20px\" src=\"https://twemoji.maxcdn.com/svg/1f61e.svg\" data-reactid=\".0.0.$1\">', ':(');
+        });
+      });
+
+      context('when useEmoticon option is given as true', () => {
+        it("renders emoticon", () => {
+          assertDOM('<img width=\"20px\" height=\"20px\" src=\"https://twemoji.maxcdn.com/svg/1f61e.svg\" data-reactid=\".0.0.$1\">', ':(', {useEmoticon: true});
+        });
+      });
+
+      context('when useEmoticon option is given as false', () => {
+        it("renders emoticon", () => {
+          assertDOM('<span data-reactid=\".0.0.0\">:(</span>', ':(', {useEmoticon: false});
+        });
+      });
+    });
+
     it("reflects width when it's passed via options", () => {
       assertDOM('<img width=\"30px\" height=\"20px\" src=\"https://twemoji.maxcdn.com/svg/1f604.svg\" data-reactid=\".0.0.$1\">', ':smile:', {width: '30px'});
     });
