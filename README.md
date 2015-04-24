@@ -55,7 +55,7 @@ height | 20px | String
 host | "" | String
 path | "" | String
 ext | svg | String
-className | img | String
+className | "" | String
 
 ## Tips
 
