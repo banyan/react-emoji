@@ -16,8 +16,6 @@ let ReactEmoji = () => {
     let hash = {
       useEmoticon: options.useEmoticon === false ? false : true,
       emojiType: options.emojiType || 'twemoji',
-      width: options.width || '20px',
-      height: options.height || '20px',
       host: options.host || '',
       path: options.path || '',
       ext: options.ext || 'svg'
