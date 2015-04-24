@@ -65,14 +65,6 @@ describe("ReactAutolinkMixin", () => {
       });
     });
 
-    it("reflects width when it's passed via options", () => {
-      assertDOM('<img width=\"30px\" height=\"20px\" src=\"https://twemoji.maxcdn.com/svg/1f604.svg\" data-reactid=\".0.0.$1\">', ':smile:', {width: '30px'});
-    });
-
-    it("reflects height when it's passed via options", () => {
-      assertDOM('<img width=\"20px\" height=\"30px\" src=\"https://twemoji.maxcdn.com/svg/1f604.svg\" data-reactid=\".0.0.$1\">', ':smile:', {height: '30px'});
-    });
-
     it("reflects emojiType when it's passed via options", () => {
       assertDOM('<img width=\"20px\" height=\"20px\" src=\"http://cdn.jsdelivr.net/emojione/assets/svg/1F604.svg\" data-reactid=\".0.0.$1\">', ':smile:', {emojiType: 'emojione'});
     });
@@ -89,8 +81,14 @@ describe("ReactAutolinkMixin", () => {
       assertDOM('<img width=\"20px\" height=\"20px\" src=\"https://twemoji.maxcdn.com/png/1f604.png\" data-reactid=\".0.0.$1\">', ':smile:', {ext: 'png'});
     });
 
-    it("reflects className when it's passed via options", () => {
-      assertDOM('<img width=\"20px\" height=\"20px\" src=\"https://twemoji.maxcdn.com/svg/1f604.svg\" data-reactid=\".0.0.$1\" class=\"foo\">', ':smile:', {className: 'foo'});
+    context('attributes', () => {
+      it("reflects atttibutes with default options when it's not given", () => {
+        assertDOM('<img width=\"20px\" height=\"20px\" src=\"https://twemoji.maxcdn.com/svg/1f604.svg\" data-reactid=\".0.0.$1\">', ':smile:');
+      });
+
+      it("reflects atttibutes with default options when it's not given", () => {
+        assertDOM('<img width=\"30px\" height=\"20px\" src=\"https://twemoji.maxcdn.com/svg/1f604.svg\" data-reactid=\".0.0.$1\" class=\"foo\">', ':smile:', {attributes: {width: '30px', className: 'foo'}});
+      });
     });
   });
 

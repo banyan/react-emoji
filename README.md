@@ -46,16 +46,14 @@ let App = React.createClass({
 
 All options are optional.
 
-Properties | Default value | Type
----|---|---
-useEmoticon | true | Boolean
-emojiType | twemoji | String
-width | 20px | String
-height | 20px | String
-host | "" | String
-path | "" | String
-ext | svg | String
-className | "" | String
+Properties | Description | Default | Type
+---|---|---|---
+useEmoticon | Use emoticon or not| true | Boolean
+emojiType | twemoji or emojione are available | twemoji | String
+host | Custom host | "" | String
+path | Custom path | "" | String
+ext | asset ext. svg or png are available | svg | String
+attributes | Attributes such as className or onClick | {width: '20px', height: '20px'} | Object
 
 ## Tips
 

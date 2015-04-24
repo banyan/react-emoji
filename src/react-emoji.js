@@ -22,7 +22,8 @@ let ReactEmoji = () => {
       path: options.path || '',
       ext: options.ext || 'svg'
     };
-    return options.className !== '' ? assign(hash, { className: options.className }) : hash;
+    hash.attributes = assign({width: '20px', height: '20px'}, options.attributes);
+    return hash;
   };
 
   let buildDelimiterAndDict = (useEmoticon) => {
@@ -72,7 +73,7 @@ let ReactEmoji = () => {
           if (match) {
             return React.createElement(
               'img',
-              assign(options, {
+              assign(options.attributes, {
                 key: index,
                 src: buildImageUrl(dict[getKey(match[0])], options)
               })
