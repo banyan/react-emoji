@@ -24,8 +24,7 @@ let SampleComponent = React.createClass({
   }
 });
 
-
-describe("ReactAutolinkMixin", () => {
+describe("ReactEmojiMixin", () => {
   let sampleComponent = TestUtils.renderIntoDocument(<SampleComponent />);
 
   let assertDOM = (expected, text, options) => {
@@ -41,6 +40,17 @@ describe("ReactAutolinkMixin", () => {
 
     it("renders emoticon", () => {
       assertDOM('<img width=\"20px\" height=\"20px\" src=\"https://twemoji.maxcdn.com/svg/1f61e.svg\" data-reactid=\".0.0.$1\">', ':(');
+    });
+
+    // https://github.com/banyan/react-emoji/issues/1
+    context(':/', () => {
+      it("converts to emoji", () => {
+        assertDOM('<img width=\"20px\" height=\"20px\" src=\"https://twemoji.maxcdn.com/svg/1f615.svg\" data-reactid=\".0.0.$1\">', ':/');
+      });
+
+      it("does not convert to emoji", () => {
+        assertDOM('<span data-reactid=\".0.0.0\">http://example.org</span>', 'http://example.org');
+      });
     });
   });
 

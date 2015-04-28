@@ -26,9 +26,12 @@ let ReactEmoji = () => {
 
   let buildDelimiterAndDict = (useEmoticon) => {
     if (useEmoticon) {
+      // Use negated lookahead for `:/`, refs: https://github.com/banyan/react-emoji/issues/1
+      let specialEmoticons = {':/': '1f615'};
+      let specialEmoticonsRegex = "\\:\\/(?!\\/)";
       return {
-        delimiter: new RegExp(`(:(?:${getEscapedKeys(annotations)}):|${getEscapedKeys(emoticons)})`, 'g'),
-        dict: assign(annotations, emoticons)
+        delimiter: new RegExp(`(:(?:${getEscapedKeys(annotations)}):|${getEscapedKeys(emoticons)}|${specialEmoticonsRegex})`, 'g'),
+        dict: assign(annotations, emoticons, specialEmoticons)
       };
     } else {
       return {
