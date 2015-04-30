@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node example/server.js",
     "build": "rm -rf dist/* && webpack -p --config webpack.production.config.js",
-    "test": "PHANTOMJS_BIN=./node_modules/.bin/phantomjs ./node_modules/karma/bin/karma start karma.config.js",
+    "test": "PHANTOMJS_BIN=\"${PHANTOMJS_BIN:=`which phantomjs`}\" ./node_modules/karma/bin/karma start karma.config.js",
     "coveralls": "cat coverage/lcov.info | coveralls"
   },
   "repository": {
@@ -33,7 +33,7 @@
     "istanbul-instrumenter-loader": "^0.1.2",
     "karma": "^0.12.31",
     "karma-coverage": "^0.2.7",
-    "karma-mocha": "^0.1.10",
+    "karma-mocha": "~0.1.10",
     "karma-phantomjs-launcher": "^0.1.4",
     "karma-sinon-chai": "^0.3.0",
     "karma-webpack": "^1.5.0",
@@ -42,7 +42,8 @@
     "react-hot-loader": "^1.2.3",
     "webpack": "^1.7.2",
     "webpack-dev-server": "^1.7.0",
-    "webpack-espower-loader": "^0.1.0"
+    "webpack-espower-loader": "^0.1.0",
+    "karma-mocha-reporter": "~1.0.2"
   },
   "dependencies": {
     "emoji-annotation-to-unicode": "^0.2.1",

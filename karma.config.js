@@ -43,7 +43,7 @@ module.exports = function(config) {
      * After running the tests, return the results and generate a
      * code coverage report.
      */
-    reporters: ['progress', 'coverage'],
+    reporters: ['mocha', 'coverage'],
 
     /**
      * When generating a code coverage report, use `lcov` format and
@@ -69,8 +69,7 @@ module.exports = function(config) {
     webpack: {
       module: {
         loaders: [
-          { test: /\.jsx?$/, exclude: /node_modules/, loader: "webpack-espower-loader" },
-          { test: /\.jsx?$/, exclude: /node_modules/, loader: "babel-loader"}
+          { test: /\.jsx?$/, exclude: /node_modules/, loaders: ['webpack-espower', 'babel'] },
         ],
         postLoaders: [{
           test: /\.jsx?$/,
@@ -99,11 +98,7 @@ module.exports = function(config) {
      * List of plugins
      */
     plugins: [
-      'karma-mocha',
-      'karma-webpack',
-      'karma-coverage',
-      'karma-sinon-chai',
-      'karma-phantomjs-launcher'
+      'karma-*'
     ],
   });
 }
