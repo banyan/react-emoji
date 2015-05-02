@@ -52,6 +52,13 @@ describe("ReactEmojiMixin", () => {
         assertDOM('<span data-reactid=\".0.0.0\">http://example.org</span>', 'http://example.org');
       });
     });
+
+    // https://github.com/banyan/react-emoji/issues/4
+    context('when emoji key is only for GitHub', () => {
+      it("does not convert to emoji", () => {
+        assertDOM('<span data-reactid=\".0.0.0\">:octocat:</span>', ':octocat:');
+      });
+    });
   });
 
   context('options', () => {
