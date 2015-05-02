@@ -10,6 +10,10 @@
 * Switchble emoji assets ([twemoji](https://github.com/twitter/twemoji) or [Emoji One](https://github.com/Ranks/emojione))
 * Supports emoticons such as `:) :(`
 
+## Demo
+
+[banyan.github.io/react-emoji](http://banyan.github.io/react-emoji/)
+
 ## Install
 
 ```shell
