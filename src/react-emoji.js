@@ -72,11 +72,13 @@ let ReactEmoji = () => {
         text.split(delimiter).map(function(word, index) {
           let match = word.match(delimiter);
           if (match) {
+            let hex = dict[getKey(match[0])];
+            if (hex === null) return word;
             return React.createElement(
               'img',
               assign(options.attributes, {
                 key: index,
-                src: buildImageUrl(dict[getKey(match[0])], options)
+                src: buildImageUrl(hex, options)
               })
             );
           } else {
