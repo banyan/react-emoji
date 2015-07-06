@@ -19,7 +19,6 @@ let SampleComponent = React.createClass({
     return (
       <div>
         <span>{ this.emojify(this.props.text, this.props.options) }</span>
-        <em>{ this.props.singleEmojiText ? this.singleEmoji(this.props.singleEmojiText, this.props.options) ? '' }</em>
       </div>
     );
   }
@@ -41,12 +40,6 @@ describe("ReactEmojiMixin", () => {
 
     it("renders emoticon", () => {
       assertDOM('<img width=\"20px\" height=\"20px\" src=\"https://twemoji.maxcdn.com/svg/1f61e.svg\" data-reactid=\".0.0.$1\">', ':(');
-    });
-
-    it("renders single emoji", () => {
-      sampleComponent.setProps({singleEmojiText: ':smile:', options: {}});
-      let em = TestUtils.findRenderedDOMComponentWithTag(sampleComponent, "em");
-      assert.equal(em.getDOMNode().innerHTML, expected);
     });
 
     // https://github.com/banyan/react-emoji/issues/1
@@ -112,6 +105,20 @@ describe("ReactEmojiMixin", () => {
 
       it("reflects atttibutes with default options when it's not given", () => {
         assertDOM('<img width=\"30px\" height=\"20px\" src=\"https://twemoji.maxcdn.com/svg/1f604.svg\" data-reactid=\".0.0.$1\" class=\"foo\">', ':smile:', {attributes: {width: '30px', className: 'foo'}});
+      });
+    });
+
+    context('singleEmoji', () => {
+      it("renders annotation", () => {
+        assertDOM('<img width=\"20px\" height=\"20px\" src=\"https://twemoji.maxcdn.com/svg/1f604.svg\" data-reactid=\".0.0.0\">', ':smile:', {singleEmoji: true});
+      });
+
+      it("renders emoticon", () => {
+        assertDOM('<img width=\"20px\" height=\"20px\" src=\"https://twemoji.maxcdn.com/svg/1f61e.svg\" data-reactid=\".0.0.0\">', ':(', {singleEmoji: true});
+      });
+
+      it("shows text as it is if there is no emoji in dict", () => {
+        assertDOM(':foobarbaz:', ':foobarbaz:', {singleEmoji: true});
       });
     });
   });

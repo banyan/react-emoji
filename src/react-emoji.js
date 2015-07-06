@@ -18,7 +18,8 @@ let ReactEmoji = () => {
       emojiType: options.emojiType || 'twemoji',
       host: options.host || '',
       path: options.path || '',
-      ext: options.ext || 'svg'
+      ext: options.ext || 'svg',
+      singleEmoji: options.singleEmoji || false
     };
     hash.attributes = assign({width: '20px', height: '20px'}, options.attributes);
     return hash;
@@ -27,6 +28,7 @@ let ReactEmoji = () => {
   // Use negated lookahead for `:/`, refs: https://github.com/banyan/react-emoji/issues/1
   let specialEmoticons = {':/': '1f615'};
   let specialEmoticonsRegex = "\\:\\/(?!\\/)";
+
   const emojiWithEmoticons = {
     delimiter: new RegExp(`(:(?:${getEscapedKeys(annotations)}):|${getEscapedKeys(emoticons)}|${specialEmoticonsRegex})`, 'g'),
     dict: assign(annotations, emoticons, specialEmoticons)
@@ -57,46 +59,53 @@ let ReactEmoji = () => {
     }
   };
 
-  return {
-    emojify(text, options = {}) {
-      if (!text) return null;
-
-      options = buildOptions(options);
-      let { delimiter, dict } = options.useEmoticon ? emojiWithEmoticons : emojiWithoutEmoticons;
-
-      return compact(
-        text.split(delimiter).map(function(word, index) {
-          let match = word.match(delimiter);
-          if (match) {
-            let hex = dict[getKey(match[0])];
-            if (hex === null) return word;
-            return React.createElement(
-              'img',
-              assign(options.attributes, {
-                key: index,
-                src: buildImageUrl(hex, options)
-              })
-            );
-          } else {
-            return word;
-          }
-        })
-      );
-    },
-
-    singleEmoji(annotation, options = {}) {
-      options = buildOptions(options);
-      let { dict } = options.useEmoticon ? emojiWithEmoticons : emojiWithoutEmoticons;
-      let hex = dict[getKey(annotation)];
-      if (hex === null)
-        throw new Error(`Could not find emoji ${annotation}.`);
+  let emojifyTextToSingleEmoji = (text, options) => {
+    let { dict } = options.useEmoticon ? emojiWithEmoticons : emojiWithoutEmoticons;
+    let hex = dict[getKey(text)];
+    if (hex) {
       return React.createElement(
         'img',
         assign(options.attributes, {
           src: buildImageUrl(hex, options)
         })
       );
+    } else {
+      return text;
     }
+  };
+
+  let emojifyText = (text, options) => {
+    let { delimiter, dict } = options.useEmoticon ? emojiWithEmoticons : emojiWithoutEmoticons;
+    return compact(
+      text.split(delimiter).map(function(word, index) {
+        let match = word.match(delimiter);
+        if (match) {
+          let hex = dict[getKey(match[0])];
+          if (hex === null) return word;
+          return React.createElement(
+            'img',
+            assign(options.attributes, {
+              key: index,
+              src: buildImageUrl(hex, options)
+            })
+          );
+        } else {
+          return word;
+        }
+      })
+    );
+  };
+
+  return {
+    emojify(text, options = {}) {
+      if (!text) return null;
+      options = buildOptions(options);
+      if (options.singleEmoji) {
+        return emojifyTextToSingleEmoji(text, options);
+      } else {
+        return emojifyText(text, options);
+      }
+    },
   };
 };
 
