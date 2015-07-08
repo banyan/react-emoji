@@ -58,6 +58,8 @@ host | Custom host | "" | String
 path | Custom path | "" | String
 ext | asset ext. svg or png are available | svg | String
 attributes | Attributes such as className or onClick | {width: '20px', height: '20px'} | Object
+singleEmoji | Show single emoji (either of annotation or emoticon), use this option if input is limited to render single emoji, this is slightly faster | false | Boolean
+strict | Throw an error if annotation is not in dict, it's handy if emoji input is not from end user | false | Boolean
 
 ## Tips
 
