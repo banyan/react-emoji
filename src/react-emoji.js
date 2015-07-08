@@ -19,7 +19,8 @@ let ReactEmoji = () => {
       host: options.host || '',
       path: options.path || '',
       ext: options.ext || 'svg',
-      singleEmoji: options.singleEmoji || false
+      singleEmoji: options.singleEmoji || false,
+      strict: options.strict || false
     };
     hash.attributes = assign({width: '20px', height: '20px'}, options.attributes);
     return hash;
@@ -62,16 +63,14 @@ let ReactEmoji = () => {
   let emojifyTextToSingleEmoji = (text, options) => {
     let { dict } = options.useEmoticon ? emojiWithEmoticons : emojiWithoutEmoticons;
     let hex = dict[getKey(text)];
-    if (hex) {
-      return React.createElement(
-        'img',
-        assign(options.attributes, {
-          src: buildImageUrl(hex, options)
-        })
-      );
-    } else {
-      return text;
-    }
+    if (!!options.strict && !hex) throw new Error(`Could not find emoji: ${text}.`);
+    if (!hex) return text;
+    return React.createElement(
+      'img',
+      assign(options.attributes, {
+        src: buildImageUrl(hex, options)
+      })
+    );
   };
 
   let emojifyText = (text, options) => {
@@ -79,6 +78,7 @@ let ReactEmoji = () => {
     return compact(
       text.split(delimiter).map(function(word, index) {
         let match = word.match(delimiter);
+        if (!!options.strict && word !== '' && match === null) throw new Error(`Could not find emoji: ${word}.`);
         if (match) {
           let hex = dict[getKey(match[0])];
           if (hex === null) return word;
