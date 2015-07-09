@@ -33,6 +33,13 @@ describe("ReactEmojiMixin", () => {
     assert.equal(span.getDOMNode().innerHTML, expected);
   };
 
+  let assertThrow = (text, options) => {
+    let fn = () => {
+      sampleComponent.setProps({text: text, options: options});
+    };
+    assert.throws(fn);
+  };
+
   context('parse', () => {
     it("renders annotation", () => {
       assertDOM('<img width=\"20px\" height=\"20px\" src=\"https://twemoji.maxcdn.com/svg/1f604.svg\" data-reactid=\".0.0.$1\">', ':smile:');
@@ -105,6 +112,50 @@ describe("ReactEmojiMixin", () => {
 
       it("reflects atttibutes with default options when it's not given", () => {
         assertDOM('<img width=\"30px\" height=\"20px\" src=\"https://twemoji.maxcdn.com/svg/1f604.svg\" data-reactid=\".0.0.$1\" class=\"foo\">', ':smile:', {attributes: {width: '30px', className: 'foo'}});
+      });
+    });
+
+    context('singleEmoji', () => {
+      it("renders annotation", () => {
+        assertDOM('<img width=\"20px\" height=\"20px\" src=\"https://twemoji.maxcdn.com/svg/1f604.svg\" data-reactid=\".0.0.0\">', ':smile:', {singleEmoji: true});
+      });
+
+      it("renders emoticon", () => {
+        assertDOM('<img width=\"20px\" height=\"20px\" src=\"https://twemoji.maxcdn.com/svg/1f61e.svg\" data-reactid=\".0.0.0\">', ':(', {singleEmoji: true});
+      });
+
+      it("shows text as it is if there is no emoji in dict", () => {
+        assertDOM(':foobarbaz:', ':foobarbaz:', {singleEmoji: true});
+      });
+    });
+
+    context('strict', () => {
+      context('when singleEmoji is false', () => {
+        context('if emoji is found on list', () => {
+          it("renders emoji", () => {
+            assertDOM('<img width=\"20px\" height=\"20px\" src=\"https://twemoji.maxcdn.com/svg/1f604.svg\" data-reactid=\".0.0.$1\">', ':smile:', {strict: true});
+          });
+        });
+
+        context('if emoji is not found on list', () => {
+          it("raises an error", () => {
+            assertThrow(':foobarbaz:', {strict: true});
+          });
+        });
+      });
+
+      context('when singleEmoji is true', () => {
+        context('if emoji is found on list', () => {
+          it("renders emoji", () => {
+            assertDOM('<img width=\"20px\" height=\"20px\" src=\"https://twemoji.maxcdn.com/svg/1f604.svg\" data-reactid=\".0.0.0\">', ':smile:', {singleEmoji: true, strict: true});
+          });
+        });
+
+        context('if emoji is not found on list', () => {
+          it("raises an error", () => {
+            assertThrow(':foobarbaz:', {singleEmoji: true, strict: true});
+          });
+        });
       });
     });
   });
