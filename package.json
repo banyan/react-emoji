@@ -1,6 +1,6 @@
 {
   "name": "react-emoji",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "An emoji mixin for React",
   "main": "dist/react-emoji.js",
   "scripts": {
