@@ -12,7 +12,9 @@
 
 ## Compatible React Versions
 
-0.13 and 0.14 both can be used <= 0.4.x. However test code depends on React 0.14.
+react@0.13.x and react@0.14.x both can be used <= react-emoji@0.4.x.
+
+However, [test code](https://github.com/banyan/react-emoji/tree/master/test) depends on react@0.14.x, it's internal though.
 
 ## Demo
 
