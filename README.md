@@ -12,10 +12,7 @@
 
 ## Compatible React Versions
 
-| Compatible React Version | react-emoji Version |
-|--------------------------|-------------------------------|
-| 0.14 | >= 1.x.x |
-| 0.13 | <= 0.3.x |
+0.13 and 0.14 both can be used <= 0.4.x. However test code depends on React 0.14.
 
 ## Demo
 
