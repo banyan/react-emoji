@@ -18,10 +18,6 @@
     "emoji",
     "react-component"
   ],
-  "peerDependencies": {
-    "react": "~0.14.1",
-    "react-dom": "~0.14.1"
-  },
   "author": "Kohei Hasegawa",
   "license": "MIT",
   "bugs": {
