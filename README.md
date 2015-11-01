@@ -12,7 +12,7 @@
 
 ## Compatible React Versions
 
-| Compatible React Version | fluxible-router Version |
+| Compatible React Version | react-emoji Version |
 |--------------------------|-------------------------------|
 | 0.14 | >= 1.x.x |
 | 0.13 | <= 0.3.x |
@@ -44,7 +44,12 @@ let App = React.createClass({
   ],
 
   render() {
-    return <div>{ this.emojify(this.props.text) }</div>;
+    return (
+      <div>
+        <span>{ this.emojify(this.props.text) }</span>
+        <span>{ ReactEmoji.emojify(this.props.text) }</span> // or can be used no mixin way
+      </div>
+    );
   }
 });
 ```
