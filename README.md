@@ -10,6 +10,13 @@
 * Switchble emoji assets ([twemoji](https://github.com/twitter/twemoji) or [Emoji One](https://github.com/Ranks/emojione))
 * Supports emoticons such as `:) :(`
 
+## Compatible React Versions
+
+| Compatible React Version | fluxible-router Version |
+|--------------------------|-------------------------------|
+| 0.14 | >= 1.x.x |
+| 0.13 | <= 0.3.x |
+
 ## Demo
 
 [banyan.github.io/react-emoji](http://banyan.github.io/react-emoji/)

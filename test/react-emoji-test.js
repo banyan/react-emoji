@@ -1,6 +1,7 @@
-import React  from "react/addons";
+import React  from 'react';
+import ReactDOM  from "react-dom";
 import assert from 'power-assert';
-const {TestUtils} = React.addons;
+import TestUtils from 'react-addons-test-utils';
 
 import ReactEmojiMixin from "../src/react-emoji";
 
@@ -25,17 +26,21 @@ let SampleComponent = React.createClass({
 });
 
 describe("ReactEmojiMixin", () => {
-  let sampleComponent = TestUtils.renderIntoDocument(<SampleComponent />);
+  let sampleComponent, div;
+
+  let component = <SampleComponent />;
+  div = document.createElement('div');
+  sampleComponent = ReactDOM.render(component, div);
 
   let assertDOM = (expected, text, options) => {
-    sampleComponent.setProps({text: text, options: options});
+    ReactDOM.render(<SampleComponent text={text} options={options} />, div);
     let span = TestUtils.findRenderedDOMComponentWithTag(sampleComponent, "span");
-    assert.equal(span.getDOMNode().innerHTML, expected);
+    assert.equal(ReactDOM.findDOMNode(span).innerHTML, expected);
   };
 
   let assertThrow = (text, options) => {
     let fn = () => {
-      sampleComponent.setProps({text: text, options: options});
+      ReactDOM.render(<SampleComponent text={text} options={options} />, div);
     };
     assert.throws(fn);
   };
@@ -162,10 +167,10 @@ describe("ReactEmojiMixin", () => {
 
   context('multiple', () => {
     it("creates 3 elements", () => {
-      sampleComponent.setProps({text: 'foo :smile: :(', options: {}});
+      ReactDOM.render(<SampleComponent text='foo :smile: :(' />, div);
       let span = TestUtils.findRenderedDOMComponentWithTag(sampleComponent, "span");
       assert.equal(
-        span.getDOMNode().innerHTML,
+        ReactDOM.findDOMNode(span).innerHTML,
         '<span data-reactid=\".0.0.0\">foo </span><img width=\"20px\" height=\"20px\" src=\"https://twemoji.maxcdn.com/svg/1f604.svg\" data-reactid=\".0.0.$1\"><span data-reactid=\".0.0.2\"> </span><img width=\"20px\" height=\"20px\" src=\"https://twemoji.maxcdn.com/svg/1f61e.svg\" data-reactid=\".0.0.$3\">'
       );
     });
