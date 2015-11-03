@@ -6,6 +6,13 @@ import assign             from 'object-assign';
 import compact            from 'lodash.compact';
 
 let ReactEmoji = () => {
+    let toUnicode = (code) =>  {
+      var codes = code.split('-').map(function (value, index) {
+        return parseInt(value, 16);
+      });
+      return String.fromCodePoint.apply(null, codes);
+    };
+
   let getEscapedKeys = (hash) => {
     return Object.keys(hash)
       .map(x => escapeStringRegexp(x))
@@ -20,7 +27,8 @@ let ReactEmoji = () => {
       path: options.path || '',
       ext: options.ext || 'svg',
       singleEmoji: options.singleEmoji || false,
-      strict: options.strict || false
+      strict: options.strict || false,
+      imgOrUnicode: options.imgOrUnicode || 'img'
     };
     hash.attributes = assign({width: '20px', height: '20px'}, options.attributes);
     return hash;
@@ -65,6 +73,9 @@ let ReactEmoji = () => {
     let hex = dict[getKey(text)];
     if (!!options.strict && !hex) throw new Error(`Could not find emoji: ${text}.`);
     if (!hex) return text;
+    if(options.imgOrUnicode === 'unicode') {
+    	return toUnicode(hex);
+    }
     return React.createElement(
       'img',
       assign(options.attributes, {
@@ -82,6 +93,9 @@ let ReactEmoji = () => {
         if (match) {
           let hex = dict[getKey(match[0])];
           if (hex === null) return word;
+          if(options.imgOrUnicode === 'unicode') {
+            return toUnicode(hex);
+          }
           return React.createElement(
             'img',
             assign(options.attributes, {
