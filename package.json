@@ -50,7 +50,7 @@
   },
   "dependencies": {
     "emoji-annotation-to-unicode": "^0.2.4",
-    "emoji-emoticon-to-unicode": "^0.2.1",
+    "emoji-emoticon-to-unicode": "^0.2.2",
     "escape-string-regexp": "^1.0.3",
     "lodash.compact": "^3.0.0",
     "object-assign": "^2.0.0"
