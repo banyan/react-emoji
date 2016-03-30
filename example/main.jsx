@@ -1,5 +1,6 @@
 import 'babel-core/polyfill';
 import React  from 'react';
+import ReactDOM from 'react-dom';
 import ReactEmojiMixin from '../src/react-emoji';
 
 let App = React.createClass({
@@ -24,4 +25,4 @@ let App = React.createClass({
   }
 });
 
-React.render(<App />, document.getElementById('app'));
+ReactDOM.render(<App />, document.getElementById('app'));
