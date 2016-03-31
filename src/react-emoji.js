@@ -6,6 +6,71 @@ import assign             from 'object-assign';
 import compact            from 'lodash.compact';
 
 let ReactEmoji = () => {
+  const ReactEmojiPropTypes = {
+    useEmoticon: React.PropTypes.bool,
+    emojiType: React.PropTypes.string,
+    host: React.PropTypes.string,
+    path: React.PropTypes.string,
+    ext: React.PropTypes.string,
+    singleEmoji: React.PropTypes.bool,
+    strict: React.PropTypes.bool,
+    children: React.PropTypes.oneOfType([
+      React.PropTypes.string,
+      React.PropTypes.element,
+    ]).isRequired,
+  };
+
+  const ReactEmojiComponent = React.createClass({
+    displayName: "ReactEmoji",
+
+    propTypes: ReactEmojiPropTypes,
+
+    render() {
+      let onlyChild = this.props.children;
+
+      let options = this.getOptionsFromProps();
+
+      if (isString(onlyChild)) {
+        return (
+          <span>{emojify(onlyChild, options)}</span>
+        );
+      } else {
+        return (
+          <onlyChild>
+            {this.emojifyChildrenText(onlyChild, options)}
+          </onlyChild>
+        );
+      }
+    },
+
+    getOptionsFromProps() {
+      let options = {};
+      let attributes = assign({}, this.props);
+
+      for (let key in ReactEmojiPropTypes) {
+        options[key] = this.props[key];
+        delete attributes[key];
+      }
+      options.attributes = attributes;
+      return options;
+    },
+
+    emojifyChildrenText(onlyChild, options) {
+      return React.Children.map(onlyChild.props.children, (child) => {
+        if (isString(child)) {
+          return emojify(child, options);
+        } else {
+          return child;
+        }
+      });
+    }
+
+  });
+
+  let isString = (obj) => {
+    return toString.call(obj) === '[object String]';
+  };
+
   let getEscapedKeys = (hash) => {
     return Object.keys(hash)
       .map(x => escapeStringRegexp(x))
@@ -96,17 +161,29 @@ let ReactEmoji = () => {
     );
   };
 
+  let emojify = (text, options = {}) => {
+    if (!text) return null;
+    options = buildOptions(options);
+    if (options.singleEmoji) {
+      return emojifyTextToSingleEmoji(text, options);
+    } else {
+      return emojifyText(text, options);
+    }
+  };
+
   return {
-    emojify(text, options = {}) {
-      if (!text) return null;
-      options = buildOptions(options);
-      if (options.singleEmoji) {
-        return emojifyTextToSingleEmoji(text, options);
-      } else {
-        return emojifyText(text, options);
-      }
-    },
+    Component: ReactEmojiComponent,
+
+    emojify: emojify,
   };
 };
 
-export default ReactEmoji();
+let { Component, emojify } = ReactEmoji();
+
+export { emojify }
+
+export var ReactEmojiMixin = {
+  emojify: emojify
+};
+
+export { Component as default }
