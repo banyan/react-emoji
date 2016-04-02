@@ -53,14 +53,12 @@ let ReactEmoji = () => {
     },
 
     cloneAndEmojifyChild(child, options) {
-      console.log(child);
       return React.cloneElement(child, {}, this.emojifyChildrenText(child.props.children, options));
     },
 
     // traverse and emojify the child nodes
     emojifyChildrenText(children, options) {
       return React.Children.map(children, (child) => {
-        console.log(child);
         if (isString(child)) {
           return emojify(child, options);
         } else if (React.isValidElement(child)) {
