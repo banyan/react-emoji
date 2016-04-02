@@ -14,10 +14,7 @@ let ReactEmoji = () => {
     ext: React.PropTypes.string,
     singleEmoji: React.PropTypes.bool,
     strict: React.PropTypes.bool,
-    children: React.PropTypes.oneOfType([
-      React.PropTypes.string,
-      React.PropTypes.element,
-    ]).isRequired,
+    children: React.PropTypes.any,
   };
 
   const ReactEmojiComponent = React.createClass({
@@ -26,19 +23,18 @@ let ReactEmoji = () => {
     propTypes: ReactEmojiPropTypes,
 
     render() {
-      let onlyChild = this.props.children;
+      let emojifiedChildren = this.emojifyChildrenText(this.props.children, this.getOptionsFromProps());
 
-      let options = this.getOptionsFromProps();
+      if (!emojifiedChildren) return null;
 
-      if (isString(onlyChild)) {
-        return (
-          <span>{emojify(onlyChild, options)}</span>
-        );
+      // support for a wrapper, instead of the span we provide
+      if (emojifiedChildren.length === 1 && React.isValidElement(emojifiedChildren[0])) {
+        return emojifiedChildren[0];
       } else {
         return (
-          <onlyChild>
-            {this.emojifyChildrenText(onlyChild, options)}
-          </onlyChild>
+          <span>
+            {emojifiedChildren}
+          </span>
         );
       }
     },
@@ -51,14 +47,24 @@ let ReactEmoji = () => {
         options[key] = this.props[key];
         delete attributes[key];
       }
+
       options.attributes = attributes;
       return options;
     },
 
-    emojifyChildrenText(onlyChild, options) {
-      return React.Children.map(onlyChild.props.children, (child) => {
+    cloneAndEmojifyChild(child, options) {
+      console.log(child);
+      return React.cloneElement(child, {}, this.emojifyChildrenText(child.props.children, options));
+    },
+
+    // traverse and emojify the child nodes
+    emojifyChildrenText(children, options) {
+      return React.Children.map(children, (child) => {
+        console.log(child);
         if (isString(child)) {
           return emojify(child, options);
+        } else if (React.isValidElement(child)) {
+          return this.cloneAndEmojifyChild(child, options);
         } else {
           return child;
         }
@@ -172,13 +178,13 @@ let ReactEmoji = () => {
   };
 
   return {
-    Component: ReactEmojiComponent,
+    ReactEmojiComponent: ReactEmojiComponent,
 
     emojify: emojify,
   };
 };
 
-let { Component, emojify } = ReactEmoji();
+let { ReactEmojiComponent, emojify } = ReactEmoji();
 
 export { emojify }
 
@@ -186,4 +192,4 @@ export var ReactEmojiMixin = {
   emojify: emojify
 };
 
-export { Component as default }
+export { ReactEmojiComponent as default }

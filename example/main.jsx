@@ -23,8 +23,19 @@ let App = React.createClass({
           </ReactEmoji>
         </div>
         <div>
+          <ReactEmoji>
+            {"Hello World"}
+          </ReactEmoji>
+        </div>
+        <div>
+          <ReactEmoji />
+        </div>
+        <div>
           <ReactEmoji emojiType = 'emojione'>
             <div>
+              <div>
+                {this.props.text}
+              </div>
               {this.props.text}
             </div>
           </ReactEmoji>
