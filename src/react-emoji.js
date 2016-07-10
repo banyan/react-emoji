@@ -46,7 +46,7 @@ let ReactEmoji = () => {
     } else if (options.emojiType === 'twemoji') {
       return `https://twemoji.maxcdn.com/${options.ext}/${hex}.${options.ext}`;
     } else if (options.emojiType === 'emojione') {
-      return `http://cdn.jsdelivr.net/emojione/assets/${options.ext}/${hex.toUpperCase()}.${options.ext}`;
+      return `https://cdn.jsdelivr.net/emojione/assets/${options.ext}/${hex.toUpperCase()}.${options.ext}`;
     } else {
       throw new Error('Invalid emojiType is passed');
     }
