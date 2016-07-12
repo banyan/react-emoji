@@ -95,7 +95,7 @@ describe("ReactEmojiMixin", () => {
     });
 
     it("reflects emojiType when it's passed via options", () => {
-      assertDOM('<img width=\"20px\" height=\"20px\" src=\"http://cdn.jsdelivr.net/emojione/assets/svg/1F604.svg\" data-reactid=\".0.0.$1\">', ':smile:', {emojiType: 'emojione'});
+      assertDOM('<img width=\"20px\" height=\"20px\" src=\"https://cdn.jsdelivr.net/emojione/assets/svg/1F604.svg\" data-reactid=\".0.0.$1\">', ':smile:', {emojiType: 'emojione'});
     });
 
     it("reflects host when it's passed via options", () => {
