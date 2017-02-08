@@ -1,6 +1,6 @@
 {
   "name": "react-emoji",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "description": "An emoji mixin for React",
   "main": "dist/react-emoji.js",
   "scripts": {
@@ -34,19 +34,20 @@
     "karma": "^0.13.2",
     "karma-coverage": "^0.2.7",
     "karma-mocha": "~0.1.10",
+    "karma-mocha-reporter": "~1.0.2",
     "karma-phantomjs-launcher": "^0.1.4",
     "karma-sinon-chai": "^0.3.0",
     "karma-webpack": "^1.7.0",
+    "mocha": "^3.2.0",
     "phantomjs": "^1.9.16",
     "power-assert": "^0.10.2",
+    "react": "~0.14.1",
+    "react-addons-test-utils": "~0.14.1",
+    "react-dom": "~0.14.1",
     "react-hot-loader": "^1.2.3",
     "webpack": "^1.7.2",
     "webpack-dev-server": "^1.7.0",
-    "webpack-espower-loader": "^0.1.0",
-    "karma-mocha-reporter": "~1.0.2",
-    "react": "~0.14.1",
-    "react-dom": "~0.14.1",
-    "react-addons-test-utils": "~0.14.1"
+    "webpack-espower-loader": "^0.1.0"
   },
   "dependencies": {
     "emoji-annotation-to-unicode": "^0.2.4",

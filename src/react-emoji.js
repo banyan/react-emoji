@@ -68,7 +68,8 @@ let ReactEmoji = () => {
     return React.createElement(
       'img',
       assign(options.attributes, {
-        src: buildImageUrl(hex, options)
+        src: buildImageUrl(hex, options),
+        'data-emoji':text
       })
     );
   };
@@ -86,7 +87,8 @@ let ReactEmoji = () => {
             'img',
             assign(options.attributes, {
               key: index,
-              src: buildImageUrl(hex, options)
+              src: buildImageUrl(hex, options),
+              'data-emoji': word
             })
           );
         } else {
