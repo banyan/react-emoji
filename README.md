@@ -1,4 +1,6 @@
-# Fork from https://github.com/banyan/react-emoji that will only put emojis that are between specific characters whitelisted (like spaces of whatever you want). See examples.
+# Fork from https://github.com/banyan/react-emoji that allow you to set specific characters thats must be between emojis to be replaced (like spaces of whatever you want). 
+
+See onlyBetweenTheseChars option and examples for more.
 
 # react-emoji
 
