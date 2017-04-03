@@ -1,3 +1,5 @@
+# Fork from https://github.com/banyan/react-emoji that will only put emojis that are between specific characters whitelisted (like spaces of whatever you want). See examples.
+
 # react-emoji
 
 [![Circle CI](https://img.shields.io/circleci/project/banyan/react-emoji.svg?style=flat-square)](https://circleci.com/gh/banyan/react-emoji)
@@ -71,6 +73,8 @@ ext | asset ext. svg or png are available | svg | String
 attributes | Attributes such as className or onClick | {width: '20px', height: '20px'} | Object
 singleEmoji | Show single emoji (either of annotation or emoticon), use this option if input is limited to render single emoji, this is slightly faster | false | Boolean
 strict | Throw an error if annotation is not in dict, it's handy if emoji input is not from end user | false | Boolean
+onlyBetweenTheseChars | What characters can be before or after a emoji replacement | false | String
+
 
 ## Tips
 
