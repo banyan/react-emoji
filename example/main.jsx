@@ -20,6 +20,7 @@ let App = React.createClass({
         <div>{ this.emojify(this.props.text) }</div>
         <div>{ this.emojify(this.props.text, {emojiType: 'emojione'}) }</div>
         <div>{ this.emojify(this.props.text, {useEmoticon: false}) }</div>
+        <div>{ this.emojify("hello ;);) in;)middleoftext ;)!!", {onlyBetweenTheseChars: "!¡¿? );(:"}) }</div>
       </div>
     );
   }
