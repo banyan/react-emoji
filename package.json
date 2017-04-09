@@ -10,7 +10,8 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "lint": "eslint --cache --ext .js --ext .jsx src test",
-    "fixlint": "eslint --fix --ext .js --ext .jsx src test"
+    "fixlint": "eslint --fix --ext .js --ext .jsx src test",
+    "fmt": "prettier"
   },
   "jest": {
     "setupFiles": [
@@ -54,6 +55,7 @@
     "express": "^4.12.2",
     "jest": "^19.0.2",
     "phantomjs": "^1.9.16",
+    "prettier": "^0.22.0",
     "react": "~0.14.1",
     "react-addons-test-utils": "~0.14.1",
     "react-dom": "~0.14.1",
