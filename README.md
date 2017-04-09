@@ -23,7 +23,7 @@ However, [test code](https://github.com/banyan/react-emoji/tree/master/test) dep
 ## Install
 
 ```shell
-npm i react-emoji
+yarn add react-emoji
 ```
 
 ## Usage
@@ -79,20 +79,20 @@ In tandem with [react-autolink](https://github.com/banyan/react-autolink).
 ### Dependency
 
 ```
-$ npm i
+$ yarn
 ```
 
 
 ### Run
 
 ```
-$ npm start # => http://0.0.0.0:8080
+$ yarn start # => http://0.0.0.0:8080
 ```
 
 ### Test
 
 ```
-$ npm test
+$ yarn test
 ```
 
 ## License
