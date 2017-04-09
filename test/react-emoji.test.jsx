@@ -1,21 +1,31 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import { mount } from 'enzyme'
 
-import { ReactEmojiMixin } from '../src/react-emoji'
+import { emojify } from '../src/react-emoji'
 
-const SampleComponent = React.createClass({
-  mixins: [
-    ReactEmojiMixin,
-  ],
+const SampleComponent = ({ text, options }) => (
+  <div>
+    <span>{ emojify(text, options) }</span>
+  </div>
+)
 
-  render() {
-    return (
-      <div>
-        <span>{ this.emojify(this.props.text, this.props.options) }</span>
-      </div>
-    )
-  },
-})
+SampleComponent.propTypes = {
+  text: PropTypes.string.isRequired,
+  options: PropTypes.shape({
+    useEmoticon: PropTypes.bool,
+    emojiType: PropTypes.string,
+    host: PropTypes.string,
+    path: PropTypes.string,
+    ext: PropTypes.string,
+    attributes: PropTypes.object, // eslint-disable-line react/forbid-prop-types
+    singleEmoji: PropTypes.bool,
+    strict: PropTypes.bool,
+  })
+}
+
+SampleComponent.defaultProps = {
+  options: {}
+}
 
 describe('ReactEmojiMixin', () => {
   context('parse', () => {
@@ -23,7 +33,7 @@ describe('ReactEmojiMixin', () => {
       const wrapper = mount(
         <SampleComponent
           text=":smile:"
-        />
+        />,
       )
       expect(wrapper).toMatchSnapshot('renders :smile: annotation')
     })
@@ -32,7 +42,7 @@ describe('ReactEmojiMixin', () => {
       const wrapper = mount(
         <SampleComponent
           text=":("
-        />
+        />,
       )
       expect(wrapper).toMatchSnapshot('renders :( emoticon')
     })
@@ -42,7 +52,7 @@ describe('ReactEmojiMixin', () => {
         const wrapper = mount(
           <SampleComponent
             text=":/"
-          />
+          />,
         )
         expect(wrapper).toMatchSnapshot('renders :/ emoticon')
       })
@@ -51,7 +61,7 @@ describe('ReactEmojiMixin', () => {
         const wrapper = mount(
           <SampleComponent
             text="http://example.org"
-          />
+          />,
         )
         expect(wrapper).toMatchSnapshot('does not render :/ emoticon')
       })
@@ -62,7 +72,7 @@ describe('ReactEmojiMixin', () => {
         const wrapper = mount(
           <SampleComponent
             text=":octocat:"
-          />
+          />,
         )
         expect(wrapper).toMatchSnapshot('does not render :octocat: annotation')
       })
@@ -75,8 +85,8 @@ describe('ReactEmojiMixin', () => {
         const wrapper = mount(
           <SampleComponent
             text=":)"
-            options={{useEmoticon: true}}
-          />
+            options={{ useEmoticon: true }}
+          />,
         )
         expect(wrapper).toMatchSnapshot('renders :) emoticon')
       })
@@ -85,8 +95,8 @@ describe('ReactEmojiMixin', () => {
         const wrapper = mount(
           <SampleComponent
             text=":)"
-            options={{useEmoticon: false}}
-          />
+            options={{ useEmoticon: false }}
+          />,
         )
         expect(wrapper).toMatchSnapshot('does not render :) emoticon')
       })
@@ -97,34 +107,34 @@ describe('ReactEmojiMixin', () => {
         const wrapper = mount(
           <SampleComponent
             text=":)"
-            options={{emojiType: 'emojione'}}
-          />
+            options={{ emojiType: 'emojione' }}
+          />,
         )
         expect(wrapper).toMatchSnapshot("uses emojione's emoji")
       })
     })
 
     context('host', () => {
-      it("uses given host", () => {
+      it('uses given host', () => {
         const wrapper = mount(
           <SampleComponent
             text=":)"
-            options={{host: 'http://example.org'}}
-          />
+            options={{ host: 'http://example.org' }}
+          />,
         )
-        expect(wrapper).toMatchSnapshot("uses given host")
+        expect(wrapper).toMatchSnapshot('uses given host')
       })
     })
 
     context('path', () => {
-      it("uses given path", () => {
+      it('uses given path', () => {
         const wrapper = mount(
           <SampleComponent
             text=":)"
-            options={{host: 'http://example.org', path: 'foo/bar'}}
-          />
+            options={{ host: 'http://example.org', path: 'foo/bar' }}
+          />,
         )
-        expect(wrapper).toMatchSnapshot("uses given host and path")
+        expect(wrapper).toMatchSnapshot('uses given host and path')
       })
     })
 
@@ -134,9 +144,9 @@ describe('ReactEmojiMixin', () => {
           <SampleComponent
             text=":)"
             options={{ ext: 'png' }}
-          />
+          />,
         )
-        expect(wrapper).toMatchSnapshot("uses given ext")
+        expect(wrapper).toMatchSnapshot('uses given ext')
       })
     })
 
@@ -146,9 +156,9 @@ describe('ReactEmojiMixin', () => {
           <SampleComponent
             text=":)"
             options={{ attributes: { width: '30px', className: 'foo' } }}
-          />
+          />,
         )
-        expect(wrapper).toMatchSnapshot("uses given attributes")
+        expect(wrapper).toMatchSnapshot('uses given attributes')
       })
     })
 
@@ -158,9 +168,9 @@ describe('ReactEmojiMixin', () => {
           <SampleComponent
             text=":smile:"
             options={{ singleEmoji: true }}
-          />
+          />,
         )
-        expect(wrapper).toMatchSnapshot("renders :smile: annotation")
+        expect(wrapper).toMatchSnapshot('renders :smile: annotation')
       })
 
       it('renders emoticon', () => {
@@ -168,9 +178,9 @@ describe('ReactEmojiMixin', () => {
           <SampleComponent
             text=":)"
             options={{ singleEmoji: true }}
-          />
+          />,
         )
-        expect(wrapper).toMatchSnapshot("renders :) emoticon")
+        expect(wrapper).toMatchSnapshot('renders :) emoticon')
       })
 
       it('shows text as given if emoji is not found', () => {
@@ -178,9 +188,9 @@ describe('ReactEmojiMixin', () => {
           <SampleComponent
             text=":foobarbaz:"
             options={{ singleEmoji: true }}
-          />
+          />,
         )
-        expect(wrapper).toMatchSnapshot("renders :foobarbaz: as text")
+        expect(wrapper).toMatchSnapshot('renders :foobarbaz: as text')
       })
     })
 
@@ -192,9 +202,9 @@ describe('ReactEmojiMixin', () => {
               <SampleComponent
                 text=":smile:"
                 options={{ strict: true }}
-              />
+              />,
             )
-            expect(wrapper).toMatchSnapshot("renders :smile: annotation")
+            expect(wrapper).toMatchSnapshot('renders :smile: annotation')
           })
         })
 
@@ -206,7 +216,7 @@ describe('ReactEmojiMixin', () => {
                   <SampleComponent
                     text=":foobarbaz:"
                     options={{ strict: true }}
-                  />
+                  />,
                 )
               )
               expect(wrapper).toThrow(new Error('Could not find emoji: :foobarbaz:.'))
@@ -220,7 +230,7 @@ describe('ReactEmojiMixin', () => {
                   <SampleComponent
                     text=":foobarbaz:"
                     options={{ strict: true, singleEmoji: true }}
-                  />
+                  />,
                 )
               )
               expect(wrapper).toThrow(new Error('Could not find emoji: :foobarbaz:.'))
@@ -236,7 +246,7 @@ describe('ReactEmojiMixin', () => {
       const wrapper = mount(
         <SampleComponent
           text="foo :smile: :("
-        />
+        />,
       )
       expect(wrapper).toMatchSnapshot('renders multiple emoticon and annotation')
     })

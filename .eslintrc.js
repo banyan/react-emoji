@@ -14,5 +14,6 @@ module.exports = {
   },
   "rules": {
     semi: [2, "never"],
+    "comma-dangle": [2, "only-multiline"]
   }
 }

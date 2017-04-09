@@ -19,6 +19,7 @@ exports[`does not render :) emoticon 1`] = `
 
 exports[`does not render :/ emoticon 1`] = `
 <SampleComponent
+  options={Object {}}
   text="http://example.org"
 >
   <div>
@@ -31,6 +32,7 @@ exports[`does not render :/ emoticon 1`] = `
 
 exports[`does not render :octocat: annotation 1`] = `
 <SampleComponent
+  options={Object {}}
   text=":octocat:"
 >
   <div>
@@ -43,6 +45,7 @@ exports[`does not render :octocat: annotation 1`] = `
 
 exports[`renders :( emoticon 1`] = `
 <SampleComponent
+  options={Object {}}
   text=":("
 >
   <div>
@@ -101,6 +104,7 @@ exports[`renders :) emoticon 2`] = `
 
 exports[`renders :/ emoticon 1`] = `
 <SampleComponent
+  options={Object {}}
   text=":/"
 >
   <div>
@@ -134,6 +138,7 @@ exports[`renders :foobarbaz: as text 1`] = `
 
 exports[`renders :smile: annotation 1`] = `
 <SampleComponent
+  options={Object {}}
   text=":smile:"
 >
   <div>
@@ -192,6 +197,7 @@ exports[`renders :smile: annotation 3`] = `
 
 exports[`renders multiple emoticon and annotation 1`] = `
 <SampleComponent
+  options={Object {}}
   text="foo :smile: :("
 >
   <div>
