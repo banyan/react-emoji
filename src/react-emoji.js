@@ -2,7 +2,6 @@ import React from 'react'
 import annotations from 'emoji-annotation-to-unicode'
 import emoticons from 'emoji-emoticon-to-unicode'
 import escapeStringRegexp from 'escape-string-regexp'
-import assign from 'object-assign'
 import compact from 'lodash.compact'
 
 const ReactEmoji = () => {
@@ -40,7 +39,9 @@ const ReactEmoji = () => {
 
     getOptionsFromProps() {
       const options = {}
-      const attributes = assign({}, this.props)
+      const attributes = {
+        ...this.props
+      }
 
       for (const key in ReactEmojiPropTypes) {
         options[key] = this.props[key]
@@ -72,22 +73,23 @@ const ReactEmoji = () => {
   const isString = obj => toString.call(obj) === '[object String]'
 
   const getEscapedKeys = hash => Object.keys(hash)
-      .map(x => escapeStringRegexp(x))
-      .join('|')
+    .map(x => escapeStringRegexp(x))
+    .join('|')
 
-  const buildOptions = (options) => {
-    const hash = {
-      useEmoticon: options.useEmoticon !== false,
-      emojiType: options.emojiType || 'twemoji',
-      host: options.host || '',
-      path: options.path || '',
-      ext: options.ext || 'svg',
-      singleEmoji: options.singleEmoji || false,
-      strict: options.strict || false,
+  const buildOptions = (options) => ({
+    useEmoticon: options.useEmoticon !== false,
+    emojiType: options.emojiType || 'twemoji',
+    host: options.host || '',
+    path: options.path || '',
+    ext: options.ext || 'svg',
+    singleEmoji: options.singleEmoji || false,
+    strict: options.strict || false,
+    attributes: {
+      width: '20px',
+      height: '20px',
+      ...options.attributes
     }
-    hash.attributes = assign({ width: '20px', height: '20px' }, options.attributes)
-    return hash
-  }
+  })
 
   // Use negated lookahead for `:/`, refs: https://github.com/banyan/react-emoji/issues/1
   const specialEmoticons = { ':/': '1f615' }
@@ -95,7 +97,11 @@ const ReactEmoji = () => {
 
   const emojiWithEmoticons = {
     delimiter: new RegExp(`(:(?:${getEscapedKeys(annotations)}):|${getEscapedKeys(emoticons)}|${specialEmoticonsRegex})`, 'g'),
-    dict: assign(annotations, emoticons, specialEmoticons),
+    dict: {
+      ...annotations,
+      ...emoticons,
+      ...specialEmoticons,
+    }
   }
 
   const emojiWithoutEmoticons = {
@@ -128,9 +134,10 @@ const ReactEmoji = () => {
     if (!hex) return text
     return React.createElement(
       'img',
-      assign(options.attributes, {
+      {
+        ...options.attributes,
         src: buildImageUrl(hex, options),
-      }),
+      }
     )
   }
 
@@ -145,10 +152,11 @@ const ReactEmoji = () => {
           if (hex === null) return word
           return React.createElement(
             'img',
-            assign(options.attributes, {
+            {
+              ...options.attributes,
               key: index,
               src: buildImageUrl(hex, options),
-            }),
+            },
           )
         }
         return word
