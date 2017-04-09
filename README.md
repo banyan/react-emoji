@@ -79,20 +79,20 @@ In tandem with [react-autolink](https://github.com/banyan/react-autolink).
 ### Dependency
 
 ```
-$ npm i
+$ yarn
 ```
 
 
 ### Run
 
 ```
-$ npm start # => http://0.0.0.0:8080
+$ yarn start # => http://0.0.0.0:8080
 ```
 
 ### Test
 
 ```
-$ npm test
+$ yarn test
 ```
 
 ## License
