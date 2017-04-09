@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node example/server.js",
     "build": "rm -rf dist/* && webpack -p --config webpack.production.config.js",
-    "test": "PHANTOMJS_BIN=\"${PHANTOMJS_BIN:=`which phantomjs`}\" ./node_modules/karma/bin/karma start karma.config.js",
+    "test": "jest",
     "coveralls": "cat coverage/lcov.info | coveralls",
     "lint": "eslint --cache --ext .js src test",
     "fixlint": "eslint --fix --ext .js --ext .jsx src test"
@@ -28,6 +28,7 @@
   "homepage": "https://github.com/banyan/react-emoji",
   "devDependencies": {
     "babel-core": "^4.7.8",
+    "babel-jest": "^19.0.0",
     "babel-loader": "^4.1.0",
     "coveralls": "^2.11.2",
     "eslint": "^3.19.0",
@@ -38,6 +39,7 @@
     "express": "^4.12.2",
     "istanbul": "^0.3.7",
     "istanbul-instrumenter-loader": "^0.1.2",
+    "jest": "^19.0.2",
     "karma": "^0.13.2",
     "karma-coverage": "^0.2.7",
     "karma-mocha": "~0.1.10",
