@@ -23,7 +23,7 @@ However, [test code](https://github.com/banyan/react-emoji/tree/master/test) dep
 ## Install
 
 ```shell
-npm i react-emoji
+yarn add react-emoji
 ```
 
 ## Usage
