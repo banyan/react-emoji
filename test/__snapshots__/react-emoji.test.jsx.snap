@@ -195,6 +195,16 @@ exports[`renders :smile: annotation 3`] = `
 </SampleComponent>
 `;
 
+exports[`renders :smile: annotation with ReactEmoji 1`] = `
+<ReactEmoji>
+  <img
+    height="20px"
+    src="https://twemoji.maxcdn.com/svg/1f604.svg"
+    width="20px"
+  />
+</ReactEmoji>
+`;
+
 exports[`renders multiple emoticon and annotation 1`] = `
 <SampleComponent
   options={Object {}}
