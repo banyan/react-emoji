@@ -9,8 +9,8 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "lint": "eslint --cache --ext .js src test",
-    "fixlint": "eslint --fix --ext .js src test"
+    "lint": "eslint --cache --ext .js --ext .jsx src test",
+    "fixlint": "eslint --fix --ext .js --ext .jsx src test"
   },
   "jest": {
     "setupFiles": [
@@ -47,6 +47,7 @@
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jest": "^19.0.1",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.3",
     "express": "^4.12.2",
