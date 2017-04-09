@@ -3,7 +3,7 @@ import ReactDOM  from "react-dom";
 import assert from 'power-assert';
 import TestUtils from 'react-addons-test-utils';
 
-import ReactEmojiMixin from "../src/react-emoji";
+import {ReactEmojiMixin} from "../src/react-emoji";
 
 let SampleComponent = React.createClass({
   getDefaultProps() {

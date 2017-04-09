@@ -6,6 +6,75 @@ import assign             from 'object-assign';
 import compact            from 'lodash.compact';
 
 let ReactEmoji = () => {
+  const ReactEmojiPropTypes = {
+    useEmoticon: React.PropTypes.bool,
+    emojiType: React.PropTypes.string,
+    host: React.PropTypes.string,
+    path: React.PropTypes.string,
+    ext: React.PropTypes.string,
+    singleEmoji: React.PropTypes.bool,
+    strict: React.PropTypes.bool,
+    children: React.PropTypes.any,
+  };
+
+  const ReactEmojiComponent = React.createClass({
+    displayName: "ReactEmoji",
+
+    propTypes: ReactEmojiPropTypes,
+
+    render() {
+      let emojifiedChildren = this.emojifyChildrenText(this.props.children, this.getOptionsFromProps());
+
+      if (!emojifiedChildren) return null;
+
+      // support for a wrapper, instead of the span we provide
+      if (emojifiedChildren.length === 1 && React.isValidElement(emojifiedChildren[0])) {
+        return emojifiedChildren[0];
+      } else {
+        return (
+          <span>
+            {emojifiedChildren}
+          </span>
+        );
+      }
+    },
+
+    getOptionsFromProps() {
+      let options = {};
+      let attributes = assign({}, this.props);
+
+      for (let key in ReactEmojiPropTypes) {
+        options[key] = this.props[key];
+        delete attributes[key];
+      }
+
+      options.attributes = attributes;
+      return options;
+    },
+
+    cloneAndEmojifyChild(child, options) {
+      return React.cloneElement(child, {}, this.emojifyChildrenText(child.props.children, options));
+    },
+
+    // traverse and emojify the child nodes
+    emojifyChildrenText(children, options) {
+      return React.Children.map(children, (child) => {
+        if (isString(child)) {
+          return emojify(child, options);
+        } else if (React.isValidElement(child)) {
+          return this.cloneAndEmojifyChild(child, options);
+        } else {
+          return child;
+        }
+      });
+    }
+
+  });
+
+  let isString = (obj) => {
+    return toString.call(obj) === '[object String]';
+  };
+
   let getEscapedKeys = (hash) => {
     return Object.keys(hash)
       .map(x => escapeStringRegexp(x))
@@ -96,17 +165,29 @@ let ReactEmoji = () => {
     );
   };
 
+  let emojify = (text, options = {}) => {
+    if (!text) return null;
+    options = buildOptions(options);
+    if (options.singleEmoji) {
+      return emojifyTextToSingleEmoji(text, options);
+    } else {
+      return emojifyText(text, options);
+    }
+  };
+
   return {
-    emojify(text, options = {}) {
-      if (!text) return null;
-      options = buildOptions(options);
-      if (options.singleEmoji) {
-        return emojifyTextToSingleEmoji(text, options);
-      } else {
-        return emojifyText(text, options);
-      }
-    },
+    ReactEmojiComponent: ReactEmojiComponent,
+
+    emojify: emojify,
   };
 };
 
-export default ReactEmoji();
+let { ReactEmojiComponent, emojify } = ReactEmoji();
+
+export { emojify }
+
+export var ReactEmojiMixin = {
+  emojify: emojify
+};
+
+export { ReactEmojiComponent as default }

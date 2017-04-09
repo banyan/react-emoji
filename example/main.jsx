@@ -1,7 +1,7 @@
 import 'babel-core/polyfill';
 import React  from 'react';
 import ReactDOM from 'react-dom';
-import ReactEmojiMixin from '../src/react-emoji';
+import ReactEmoji, { ReactEmojiMixin, emojify } from '../src/react-emoji';
 
 let App = React.createClass({
   getDefaultProps() {
@@ -17,7 +17,30 @@ let App = React.createClass({
   render() {
     return (
       <div>
-        <div>{ this.emojify(this.props.text) }</div>
+        <div>
+          <ReactEmoji>
+            {this.props.text}
+          </ReactEmoji>
+        </div>
+        <div>
+          <ReactEmoji>
+            {"Hello World"}
+          </ReactEmoji>
+        </div>
+        <div>
+          <ReactEmoji />
+        </div>
+        <div>
+          <ReactEmoji emojiType = 'emojione'>
+            <div>
+              <div>
+                {this.props.text}
+              </div>
+              {this.props.text}
+            </div>
+          </ReactEmoji>
+        </div>
+        <div>{ emojify(this.props.text) }</div>
         <div>{ this.emojify(this.props.text, {emojiType: 'emojione'}) }</div>
         <div>{ this.emojify(this.props.text, {useEmoticon: false}) }</div>
       </div>
