@@ -30,6 +30,7 @@
     "babel-core": "^4.7.8",
     "babel-jest": "^19.0.0",
     "babel-loader": "^4.1.0",
+    "babel-preset-es2015": "^6.24.1",
     "coveralls": "^2.11.2",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^14.1.0",
