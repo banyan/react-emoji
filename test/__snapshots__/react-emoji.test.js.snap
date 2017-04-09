@@ -1,0 +1,324 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`does not render :) emoticon 1`] = `
+<SampleComponent
+  options={
+    Object {
+      "useEmoticon": false,
+    }
+  }
+  text=":)"
+>
+  <div>
+    <span>
+      :)
+    </span>
+  </div>
+</SampleComponent>
+`;
+
+exports[`does not render :/ emoticon 1`] = `
+<SampleComponent
+  text="http://example.org"
+>
+  <div>
+    <span>
+      http://example.org
+    </span>
+  </div>
+</SampleComponent>
+`;
+
+exports[`does not render :octocat: annotation 1`] = `
+<SampleComponent
+  text=":octocat:"
+>
+  <div>
+    <span>
+      :octocat:
+    </span>
+  </div>
+</SampleComponent>
+`;
+
+exports[`renders :( emoticon 1`] = `
+<SampleComponent
+  text=":("
+>
+  <div>
+    <span>
+      <img
+        height="20px"
+        src="https://twemoji.maxcdn.com/svg/1f61e.svg"
+        width="20px"
+      />
+    </span>
+  </div>
+</SampleComponent>
+`;
+
+exports[`renders :) emoticon 1`] = `
+<SampleComponent
+  options={
+    Object {
+      "useEmoticon": true,
+    }
+  }
+  text=":)"
+>
+  <div>
+    <span>
+      <img
+        height="20px"
+        src="https://twemoji.maxcdn.com/svg/1f642.svg"
+        width="20px"
+      />
+    </span>
+  </div>
+</SampleComponent>
+`;
+
+exports[`renders :) emoticon 2`] = `
+<SampleComponent
+  options={
+    Object {
+      "singleEmoji": true,
+    }
+  }
+  text=":)"
+>
+  <div>
+    <span>
+      <img
+        height="20px"
+        src="https://twemoji.maxcdn.com/svg/1f642.svg"
+        width="20px"
+      />
+    </span>
+  </div>
+</SampleComponent>
+`;
+
+exports[`renders :/ emoticon 1`] = `
+<SampleComponent
+  text=":/"
+>
+  <div>
+    <span>
+      <img
+        height="20px"
+        src="https://twemoji.maxcdn.com/svg/1f615.svg"
+        width="20px"
+      />
+    </span>
+  </div>
+</SampleComponent>
+`;
+
+exports[`renders :foobarbaz: as text 1`] = `
+<SampleComponent
+  options={
+    Object {
+      "singleEmoji": true,
+    }
+  }
+  text=":foobarbaz:"
+>
+  <div>
+    <span>
+      :foobarbaz:
+    </span>
+  </div>
+</SampleComponent>
+`;
+
+exports[`renders :smile: annotation 1`] = `
+<SampleComponent
+  text=":smile:"
+>
+  <div>
+    <span>
+      <img
+        height="20px"
+        src="https://twemoji.maxcdn.com/svg/1f604.svg"
+        width="20px"
+      />
+    </span>
+  </div>
+</SampleComponent>
+`;
+
+exports[`renders :smile: annotation 2`] = `
+<SampleComponent
+  options={
+    Object {
+      "singleEmoji": true,
+    }
+  }
+  text=":smile:"
+>
+  <div>
+    <span>
+      <img
+        height="20px"
+        src="https://twemoji.maxcdn.com/svg/1f604.svg"
+        width="20px"
+      />
+    </span>
+  </div>
+</SampleComponent>
+`;
+
+exports[`renders :smile: annotation 3`] = `
+<SampleComponent
+  options={
+    Object {
+      "strict": true,
+    }
+  }
+  text=":smile:"
+>
+  <div>
+    <span>
+      <img
+        height="20px"
+        src="https://twemoji.maxcdn.com/svg/1f604.svg"
+        width="20px"
+      />
+    </span>
+  </div>
+</SampleComponent>
+`;
+
+exports[`renders multiple emoticon and annotation 1`] = `
+<SampleComponent
+  text="foo :smile: :("
+>
+  <div>
+    <span>
+      foo 
+      <img
+        height="20px"
+        src="https://twemoji.maxcdn.com/svg/1f604.svg"
+        width="20px"
+      />
+       
+      <img
+        height="20px"
+        src="https://twemoji.maxcdn.com/svg/1f61e.svg"
+        width="20px"
+      />
+    </span>
+  </div>
+</SampleComponent>
+`;
+
+exports[`uses emojione's emoji 1`] = `
+<SampleComponent
+  options={
+    Object {
+      "emojiType": "emojione",
+    }
+  }
+  text=":)"
+>
+  <div>
+    <span>
+      <img
+        height="20px"
+        src="https://cdn.jsdelivr.net/emojione/assets/svg/1F642.svg"
+        width="20px"
+      />
+    </span>
+  </div>
+</SampleComponent>
+`;
+
+exports[`uses given attributes 1`] = `
+<SampleComponent
+  options={
+    Object {
+      "attributes": Object {
+        "className": "foo",
+        "width": "30px",
+      },
+    }
+  }
+  text=":)"
+>
+  <div>
+    <span>
+      <img
+        className="foo"
+        height="20px"
+        src="https://twemoji.maxcdn.com/svg/1f642.svg"
+        width="30px"
+      />
+    </span>
+  </div>
+</SampleComponent>
+`;
+
+exports[`uses given ext 1`] = `
+<SampleComponent
+  options={
+    Object {
+      "ext": "png",
+    }
+  }
+  text=":)"
+>
+  <div>
+    <span>
+      <img
+        height="20px"
+        src="https://twemoji.maxcdn.com/png/1f642.png"
+        width="20px"
+      />
+    </span>
+  </div>
+</SampleComponent>
+`;
+
+exports[`uses given host 1`] = `
+<SampleComponent
+  options={
+    Object {
+      "host": "http://example.org",
+    }
+  }
+  text=":)"
+>
+  <div>
+    <span>
+      <img
+        height="20px"
+        src="http://example.org/1f642.svg"
+        width="20px"
+      />
+    </span>
+  </div>
+</SampleComponent>
+`;
+
+exports[`uses given host and path 1`] = `
+<SampleComponent
+  options={
+    Object {
+      "host": "http://example.org",
+      "path": "foo/bar",
+    }
+  }
+  text=":)"
+>
+  <div>
+    <span>
+      <img
+        height="20px"
+        src="http://example.org/foo/bar/1f642.svg"
+        width="20px"
+      />
+    </span>
+  </div>
+</SampleComponent>
+`;
