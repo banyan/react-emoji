@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import { mount } from 'enzyme'
 
-import { emojify } from '../src/react-emoji'
+import ReactEmoji, { emojify } from '../src/index'
 
 const SampleComponent = ({ text, options }) => (
   <div>
@@ -27,7 +27,16 @@ SampleComponent.defaultProps = {
   options: {}
 }
 
-describe('ReactEmojiMixin', () => {
+describe('ReactEmoji', () => {
+  it('renders annotation', () => {
+    const wrapper = mount(
+      <ReactEmoji>:smile:</ReactEmoji>
+    )
+    expect(wrapper).toMatchSnapshot('renders :smile: annotation with ReactEmoji')
+  })
+})
+
+describe('emojify', () => {
   context('parse', () => {
     it('renders annotation', () => {
       const wrapper = mount(
