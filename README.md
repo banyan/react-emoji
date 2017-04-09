@@ -24,8 +24,6 @@ However, [test code](https://github.com/banyan/react-emoji/tree/master/test) dep
 
 ```shell
 npm i react-emoji
-# or
-bower i react-emoji # `window.ReactEmoji` is available
 ```
 
 ## Usage

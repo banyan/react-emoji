@@ -18,7 +18,6 @@ fi
 rm -rf dist/
 npm run build
 gsed -i "s/\"version\": \"$OLD_VERSION\"/\"version\": \"$NEW_VERSION\"/g" package.json
-gsed -i "s/\"version\": \"$OLD_VERSION\"/\"version\": \"$NEW_VERSION\"/g" bower.json
 git add .
 git commit -m "Release $NEW_VERSION"
 git tag $NEW_VERSION
