@@ -1,2 +1,2 @@
-import 'babel-core/polyfill';
-import './react-emoji-test';
+import 'babel-core/polyfill'
+import './react-emoji-test'
