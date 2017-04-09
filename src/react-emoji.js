@@ -69,7 +69,7 @@ const ReactEmoji = () => {
 
   })
 
-  let isString = obj => toString.call(obj) === '[object String]'
+  const isString = obj => toString.call(obj) === '[object String]'
 
   const getEscapedKeys = hash => Object.keys(hash)
       .map(x => escapeStringRegexp(x))
@@ -156,7 +156,7 @@ const ReactEmoji = () => {
     )
   }
 
-  let emojify = (text, options = {}) => {
+  const emojify = (text, options = {}) => {
     if (!text) return null
     options = buildOptions(options)
     if (options.singleEmoji) {
@@ -167,7 +167,6 @@ const ReactEmoji = () => {
 
   return {
     ReactEmojiComponent,
-
     emojify,
   }
 }
