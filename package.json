@@ -49,7 +49,7 @@
     "react-addons-test-utils": "~0.14.1"
   },
   "dependencies": {
-    "emoji-annotation-to-unicode": "^0.2.4",
+    "emoji-annotation-to-unicode": "^0.3.0",
     "emoji-emoticon-to-unicode": "^0.2.2",
     "escape-string-regexp": "^1.0.3",
     "lodash.compact": "^3.0.0",
