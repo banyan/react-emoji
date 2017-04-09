@@ -1,7 +1,7 @@
 import 'babel-core/polyfill';
 import React  from 'react';
 import ReactDOM from 'react-dom';
-import ReactEmoji, { ReactEmojiMixin, emojify } from '../src/react-emoji';
+import ReactEmoji, { emojify } from '../src/index';
 
 let App = React.createClass({
   getDefaultProps() {
