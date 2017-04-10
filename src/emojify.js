@@ -8,7 +8,7 @@ const getEscapedKeys = hash => Object.keys(hash)
   .map(x => escapeStringRegexp(x))
   .join('|')
 
-const buildOptions = (options) => ({
+const buildOptions = options => ({
   useEmoticon: options.useEmoticon !== false,
   emojiType: options.emojiType || 'twemoji',
   host: options.host || '',
@@ -96,9 +96,9 @@ const emojifyText = (text, options) => {
   )
 }
 
-const emojify = (text, options = {}) => {
+const emojify = (text, opts = {}) => {
   if (!text) return null
-  options = buildOptions(options)
+  const options = buildOptions(opts)
   if (options.singleEmoji) {
     return emojifyTextToSingleEmoji(text, options)
   }
