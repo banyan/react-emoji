@@ -1,20 +1,40 @@
-import React from 'react'
+// import 'grommet/scss/vanilla/index'
 
-// import ReactEmoji from '../../src/index'
-import Foo from './Foo'
+import 'grommet-css'
+import React from 'react'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import GrommetApp from 'grommet/components/App'
+import Header from 'grommet/components/Header'
+import Section from 'grommet/components/Section'
+import Article from 'grommet/components/Article'
+import Box from 'grommet/components/Box'
+import Tiles from 'grommet/components/Tiles'
+import Form from 'grommet/components/Form'
+import ReactEmoji from 'react-emoji'
 import './App.css'
+import {Motion, spring, TransitionMotion} from 'react-motion'
+import { Shake, ShakeSlow } from 'reshake'
+import Demo from './Demo'
+import AppBar from 'material-ui/AppBar';
 
 const App = () => (
-  <div className="App">
-    <div className="App-header">
-      <h2>Welcome to React</h2>
+  <MuiThemeProvider>
+    <div>
+      <AppBar
+        title="React Emoji"
+        iconClassNameRight="muidocs-icon-navigation-expand-more"
+      />
+      <header>
+        <div style={{ color: 'white', margin: '20px', padding: '20px', width: '112px', height: '80px', background: '#8CD7F3', borderRadius: '0px' }}>
+          <h1>
+            react <br />emoji
+          </h1>
+        </div>
+        <Demo />
+      </header>
     </div>
-    <Foo />
-  </div>
+  </MuiThemeProvider>
 )
-    // <ReactEmoji>
-      // <span>:100:</span>
-    // </ReactEmoji>
 
 // let App = React.createClass({
   // getDefaultProps() {
