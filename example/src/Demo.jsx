@@ -1,7 +1,37 @@
 import React from 'react'
-import ReactEmoji from 'react-emoji'
+
+import {GridList, GridTile} from 'material-ui/GridList'
+import IconButton from 'material-ui/IconButton'
+import Subheader from 'material-ui/Subheader'
+import StarBorder from 'material-ui/svg-icons/toggle/star-border'
+import TextField from 'material-ui/TextField'
+import ReactEmoji, { emojify } from 'react-emoji'
 
 import {TransitionMotion, spring, presets} from 'react-motion'
+
+const formStyle = {
+  position: 'fixed',
+  right: 0,
+  bottom: 0,
+  width: '100%',
+  height: '250px',
+  zIndex: 1,
+  opacity: 0.9,
+}
+
+const styles = {
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+  },
+  foo: {
+    width: '30%',
+    height: '90vh',
+    margin: '0 auto',
+    overflowY: 'auto',
+  },
+}
 
 const Demo = React.createClass({
   getInitialState() {
@@ -12,38 +42,40 @@ const Demo = React.createClass({
         {key: 't3', data: {text: 'Try to finish conference slides'}},
         {key: 't4', data: {text: 'Eat cheese and drink wine'}},
         {key: 't5', data: {text: 'Go around in Uber'}},
-        {key: 't6', data: {text: 'Talk with conf attendees'}},
+        {key: 't6', data: {text: 'Try to finish conference slides'}},
+        {key: 't7', data: {text: 'Eat cheese and drink wine'}},
+        {key: 't8', data: {text: 'Go around in Uber'}},
+        {key: 't9', data: {text: 'Try to finish conference slides'}},
+        {key: 't10', data: {text: 'Eat cheese and drink wine'}},
+        {key: 't11', data: {text: 'Go around in Uber'}},
       ],
       value: '',
       selected: 'all',
-    };
+    }
   },
 
   // logic from todo, unrelated to animation
   handleChange({target: {value}}) {
-    this.setState({value});
+    this.setState({value})
   },
 
   handleSubmit(e) {
-    e.preventDefault();
+    e.preventDefault()
     const newItem = {
       key: 't' + Date.now(),
       data: { text: this.state.value },
-    };
+    }
 
-    this.setState({todos: [
-      ...this.state.todos,
-      newItem
-    ]});
+    this.setState({todos: [newItem].concat(this.state.todos)});
   },
 
   // actual animation-related logic
   getDefaultStyles() {
-    return this.state.todos.map(todo => ({...todo, style: {height: -100, opacity: 1}}));
+    return this.state.todos.map(todo => ({...todo, style: {height: -100, opacity: 1}}))
   },
 
   getStyles() {
-    const {todos, value, selected} = this.state;
+    const {todos, value, selected} = this.state
     return todos.map((todo, i) => {
       return {
         ...todo,
@@ -51,40 +83,30 @@ const Demo = React.createClass({
           height: spring(60, presets.gentle),
           opacity: spring(1, presets.gentle),
         }
-      };
-    });
+      }
+    })
   },
 
   willEnter() {
     return {
       height: 0,
       opacity: 1,
-    };
+    }
   },
 
   willLeave() {
     return {
       height: spring(0),
       opacity: spring(0),
-    };
+    }
   },
 
   render() {
-    const {todos, value, selected} = this.state;
+    const {todos, value, selected} = this.state
 
     return (
-      <section>
-        <section className="main">
-          <header className="header">
-            <form onSubmit={this.handleSubmit}>
-              <input
-                autoFocus={true}
-                placeholder="Type :100: or :)"
-                value={value}
-                onChange={this.handleChange}
-              />
-            </form>
-          </header>
+      <section style={styles.root}>
+        <section style={styles.foo}>
           <TransitionMotion
             defaultStyles={this.getDefaultStyles()}
             styles={this.getStyles()}
@@ -92,19 +114,41 @@ const Demo = React.createClass({
             willEnter={this.willEnter}>
 
             {styles =>
-              <ul className="todo-list">
+              <GridList
+                cellHeight={70}
+                style={styles.gridList}
+                cols={1}
+              >
                 {styles.map(({key, style, data: {isDone, text}}) =>
-                  <li key={key} style={style} className={isDone ? 'completed' : ''}>
-                    <ReactEmoji>{text}</ReactEmoji>
-                  </li>
+                  <GridTile
+                    key={key}
+                    title={emojify(text)}
+                    style={style}
+                    titleBackground='#11DDCC'
+                  />
                 )}
-              </ul>
+              </GridList>
             }
           </TransitionMotion>
         </section>
+
+        <div style={formStyle}>
+          <div style={{width: '40%', margin: '0 auto'}}>
+            <form onSubmit={this.handleSubmit}>
+              <input
+                className="foo"
+                autoFocus={true}
+                placeholder="Type :100: or :)"
+                value={value}
+                onChange={this.handleChange}
+                type="text"
+              />
+            </form>
+          </div>
+        </div>
       </section>
-    );
+    )
   },
-});
+})
 
 export default Demo

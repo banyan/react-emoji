@@ -15,7 +15,7 @@ const App = () => (
         title="React Emoji"
         iconClassNameRight="muidocs-icon-navigation-expand-more"
       />
-      <GlidList />
+      <Demo />
     </div>
   </MuiThemeProvider>
 )

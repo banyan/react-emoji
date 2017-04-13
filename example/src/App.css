@@ -43,18 +43,10 @@ h1 {
 /* } */
 
 .foo {
-/* position: relative; */
-margin: 100px 0;
-width: 70%;
-/* font-size: 24px; */
-/* font-family: inherit; */
-/* font-weight: inherit; */
-/* line-height: 1.4em; */
-/* border: 0; */
-/* color: inherit; */
-padding: 6px;
-/* box-shadow: inset 0 -1px 5px 0 rgba(0, 0, 0, 0.2); */
-/* box-sizing: border-box; */
+  /* margin: 100px 0; */
+  width: 100%;
+  height: 60px;
+  /* padding: 20%; */
   border: 1px #B8B8B8 solid;
   background-color: #fff;
 }
