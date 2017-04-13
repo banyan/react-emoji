@@ -19,58 +19,5 @@ const App = () => (
     </div>
   </MuiThemeProvider>
 )
-        // <div style={{ color: 'white', margin: '20px', padding: '20px', width: '112px', height: '80px', background: '#8CD7F3', borderRadius: '0px' }}>
-          // <h1>
-            // react <br />emoji
-          // </h1>
-        // </div>
-        // <Demo />
-
-// let App = React.createClass({
-  // getDefaultProps() {
-    // return {
-      // text: "hi I'm happy :smile: :100: :+1: :) http://yahoo.co.jp :arrow_double_down:"
-    // };
-  // },
-
-  // mixins: [
-    // ReactEmojiMixin
-  // ],
-
-  // render() {
-    // return (
-      // <div>
-        // <div>
-          // <ReactEmoji>
-            // {this.props.text}
-          // </ReactEmoji>
-        // </div>
-        // <div>
-          // <ReactEmoji>
-            // {"Hello World"}
-          // </ReactEmoji>
-        // </div>
-        // <div>
-          // <ReactEmoji />
-        // </div>
-        // <div>
-          // <ReactEmoji emojiType = 'emojione'>
-            // <div>
-              // <div>
-                // {this.props.text}
-              // </div>
-              // {this.props.text}
-            // </div>
-          // </ReactEmoji>
-        // </div>
-        // <div>{ emojify(this.props.text) }</div>
-        // <div>{ this.emojify(this.props.text, {emojiType: 'emojione'}) }</div>
-        // <div>{ this.emojify(this.props.text, {useEmoticon: false}) }</div>
-      // </div>
-    // );
-  // }
-// });
-
-// ReactDOM.render(<App />, document.getElementById('app'));
 
 export default App
