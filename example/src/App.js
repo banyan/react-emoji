@@ -5,7 +5,7 @@ import Demo from './containers/Demo'
 import AppBar from 'material-ui/AppBar'
 
 const App = () => (
-  <MuiThemeProvider className="baz">
+  <MuiThemeProvider>
     <div>
       <AppBar
         title="React Emoji"
