@@ -60,21 +60,23 @@ const App = compose(
           showMenuIconButton={false}
         />
 
-        <List>
-          <Subheader>emojiType</Subheader>
-          <RadioButtonGroup name="emojiType" defaultSelected="twemoji" onChange={onSettingsChange}>
-            <RadioButton
-              value="twemoji"
-              label="twemoji"
-              style={styles.radioButton}
-            />
-            <RadioButton
-              value="emojione"
-              label="emojione"
-              style={styles.radioButton}
-            />
-          </RadioButtonGroup>
-        </List>
+        <div style={styles.block}>
+          <List>
+            <Subheader>emojiType</Subheader>
+            <RadioButtonGroup name="emojiType" defaultSelected="twemoji" onChange={onSettingsChange} style={{width: '200px', padding: '15px 0 0 30px'}}>
+              <RadioButton
+                value="twemoji"
+                label="twemoji"
+                style={styles.radioButton}
+              />
+              <RadioButton
+                value="emojione"
+                label="emojione"
+                style={styles.radioButton}
+              />
+            </RadioButtonGroup>
+          </List>
+        </div>
 
         <List>
           <Subheader>useEmoticon</Subheader>
@@ -83,7 +85,7 @@ const App = compose(
             onToggle={onSettingsChange}
             label="Use emoticon"
             defaultToggled={true}
-            style={styles.toggle}
+            style={{width: '200px', padding: '15px 0 0 30px'}}
           />
         </List>
       </Drawer>
