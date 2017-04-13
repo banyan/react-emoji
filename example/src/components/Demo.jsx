@@ -11,9 +11,12 @@ const Demo = ({
   onSubmit,
   getDefaultStyles,
   getStyles,
-  willEnter
-}) => (
-  <section className="list-container">
+  willEnter,
+  settings,
+}) => {
+  console.log('settings: ', settings)
+
+  return <section className="list-container">
     <section className="list">
       <TransitionMotion
         defaultStyles={getDefaultStyles()}
@@ -27,7 +30,7 @@ const Demo = ({
             {styles.map(({key, style, data: {text}}) =>
               <GridTile
                 key={key}
-                title={emojify(text)}
+                title={emojify(text, settings)}
                 style={style}
                 titleBackground={itemBackgroundColor}
               />
@@ -50,6 +53,6 @@ const Demo = ({
       </form>
     </div>
   </section>
-)
+}
 
 export default Demo

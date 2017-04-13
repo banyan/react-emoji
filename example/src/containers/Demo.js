@@ -6,7 +6,7 @@ import Demo from '../components/Demo'
 const defaultItems =  [
   {key: 't1',  data: {text: ':100:'}},
   {key: 't2',  data: {text: ':smile:'}},
-  {key: 't3',  data: {text: 'Try to finish conference slides'}},
+  {key: 't3',  data: {text: ':)'}},
   {key: 't4',  data: {text: 'Eat cheese and drink wine'}},
   {key: 't5',  data: {text: 'Go around in Uber'}},
   {key: 't6',  data: {text: 'Try to finish conference slides'}},
