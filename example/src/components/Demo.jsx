@@ -28,69 +28,16 @@ const styles = {
 }
 
 const Demo = React.createClass({
-  handleChange({target: {value}}) {
-    this.props.setValue(value)
-  },
-
-  handleSubmit(e) {
-    e.preventDefault()
-
-    const newItem = {
-      key: 't' + Date.now(),
-      data: { text: this.props.value },
-    }
-
-    // this.setState({todos: [newItem].concat(this.state.todos)});
-    this.props.setTodos([newItem].concat(this.props.todos))
-  },
-
-  // actual animation-related logic
-  getDefaultStyles() {
-    return this.props.todos.map(todo => ({...todo, style: {height: -500, opacity: 1}}))
-  },
-
-  getStyles() {
-    const { todos } = this.props
-    return todos.map((todo, i) => {
-      return {
-        ...todo,
-        style: {
-          height: spring(60, presets.gentle),
-          opacity: spring(1, presets.gentle),
-        }
-      }
-    })
-  },
-
-  willEnter() {
-    return {
-      height: 0,
-      opacity: 1,
-    }
-  },
-
-  willLeave() {
-    return {
-      height: spring(0),
-      opacity: spring(0),
-    }
-  },
-
   render() {
-    const { value } = this.props
-
-    console.log('this.state: ', this.state)
-    console.log('this.props: ', this.props)
+    const { value, onInputChange, onSubmit, getDefaultStyles, getStyles, willEnter } = this.props
 
     return (
       <section style={styles.root}>
         <section style={styles.foo}>
           <TransitionMotion
-            defaultStyles={this.getDefaultStyles()}
-            styles={this.getStyles()}
-            willLeave={this.willLeave}
-            willEnter={this.willEnter}>
-
+            defaultStyles={getDefaultStyles()}
+            styles={getStyles()}
+            willEnter={willEnter}>
             {styles =>
               <GridList
                 cellHeight={70}
@@ -112,13 +59,13 @@ const Demo = React.createClass({
 
         <div style={formStyle}>
           <div style={{width: '40%', margin: '0 auto'}}>
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={onSubmit}>
               <input
                 className="foo"
                 autoFocus={true}
                 placeholder="Type :100: or :)"
                 value={value}
-                onChange={this.handleChange}
+                onChange={onInputChange}
                 type="text"
               />
             </form>

@@ -1,4 +1,5 @@
-import { withHandlers, withState, compose, lifecycle } from 'recompose'
+import { withHandlers, withState, withProps, compose, lifecycle } from 'recompose'
+import {TransitionMotion, spring, presets} from 'react-motion'
 
 import Demo from '../components/Demo'
 
@@ -19,4 +20,36 @@ const defaultTodos =  [
 export default compose(
   withState('todos', 'setTodos', defaultTodos),
   withState('value', 'setValue', ''),
+  withHandlers({
+    onInputChange: props => ({target: {value}}) => {
+      props.setValue(value)
+    },
+    onSubmit: props => event => {
+      event.preventDefault()
+      const newItem = {
+        key: 't' + Date.now(),
+        data: { text: props.value },
+      }
+      props.setTodos([ newItem, ...props.todos ])
+      props.setValue('')
+    },
+    getDefaultStyles: props => () => (
+      props.todos.map(todo => ({...todo, style: {height: -500, opacity: 10}}))
+    ),
+    getStyles: ({ todos }) => () => (
+      todos.map((todo, i) => ({
+        ...todo,
+        style: {
+          height: spring(60, presets.gentle),
+          opacity: spring(1, presets.gentle),
+        }
+      }))
+    ),
+  }),
+  withProps(props => ({
+    willEnter: () => ({
+      height: 0,
+      opacity: 1,
+    })
+  })),
 )(Demo)
