@@ -1,7 +1,7 @@
 import React from 'react'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import './App.css'
-import Demo from './components/Demo'
+import Demo from './containers/Demo'
 import AppBar from 'material-ui/AppBar'
 
 const App = () => (
