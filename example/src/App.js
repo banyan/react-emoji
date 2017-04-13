@@ -5,7 +5,6 @@ import './App.css'
 import {Motion, spring, TransitionMotion} from 'react-motion'
 import Demo from './Demo'
 import Drawer from './Drawer'
-import GlidList from './GlidList'
 import AppBar from 'material-ui/AppBar';
 
 const App = () => (

@@ -18,7 +18,29 @@ h1 {
   line-height: 30px;
 }
 
+input[type="text"] {
+  font-size:24px;
+}
+
 input[type="text"]:focus {
   outline: 0;
   border-color: #999999;
+}
+
+input::-webkit-input-placeholder {
+	font-style: italic;
+	font-weight: 300;
+	color: #e6e6e6;
+}
+
+input::-moz-placeholder {
+	font-style: italic;
+	font-weight: 300;
+	color: #e6e6e6;
+}
+
+input::input-placeholder {
+	font-style: italic;
+	font-weight: 300;
+	color: #e6e6e6;
 }
