@@ -25,12 +25,14 @@ export default compose(
       props.setValue(value)
     },
     onSubmit: props => event => {
+      const { value, items } = props
       event.preventDefault()
+      if (!value) return
       const newItem = {
         key: 't' + Date.now(),
-        data: { text: props.value },
+        data: { text: value },
       }
-      props.setItems([ newItem, ...props.items ])
+      props.setItems([ newItem, ...items ])
       props.setValue('')
     },
     getDefaultStyles: props => () => (
