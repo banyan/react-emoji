@@ -32,6 +32,7 @@ const Demo = ({
                 key={key}
                 title={emojify(text, settings)}
                 style={style}
+                className="foo"
                 titleBackground={itemBackgroundColor}
               />
             )}
