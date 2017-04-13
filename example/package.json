@@ -11,6 +11,7 @@
     "react-dom": "^15.5.3",
     "react-emoji": "https://github.com/banyan/react-emoji#1.0.0-rc.0",
     "react-motion": "^0.4.7",
+    "react-tap-event-plugin": "^2.0.1",
     "recompose": "^0.23.1"
   },
   "scripts": {
