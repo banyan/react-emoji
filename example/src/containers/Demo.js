@@ -43,7 +43,7 @@ export default compose(
       }))
     ),
     getStyles: ({ items }) => () => (
-      items.map((item, i) => ({
+      items.map((item) => ({
         ...item,
         style: {
           height: spring(60, presets.gentle),

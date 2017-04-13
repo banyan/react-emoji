@@ -3,29 +3,7 @@ import { GridList, GridTile } from 'material-ui/GridList'
 import { emojify } from 'react-emoji'
 import { TransitionMotion } from 'react-motion'
 
-const formStyle = {
-  position: 'fixed',
-  right: 0,
-  bottom: 0,
-  width: '100%',
-  height: '250px',
-  zIndex: 1,
-  opacity: 0.9,
-}
-
-const styles = {
-  root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
-  },
-  foo: {
-    width: '30%',
-    height: '90vh',
-    margin: '0 auto',
-    overflowY: 'auto',
-  },
-}
+const itemBackgroundColor = '#11DDCC'
 
 const Demo = ({
   value,
@@ -35,8 +13,8 @@ const Demo = ({
   getStyles,
   willEnter
 }) => (
-  <section style={styles.root}>
-    <section style={styles.foo}>
+  <section className="list-container">
+    <section className="list">
       <TransitionMotion
         defaultStyles={getDefaultStyles()}
         styles={getStyles()}
@@ -44,7 +22,6 @@ const Demo = ({
         {styles =>
           <GridList
             cellHeight={70}
-            style={styles.gridList}
             cols={1}
           >
             {styles.map(({key, style, data: {text}}) =>
@@ -52,7 +29,7 @@ const Demo = ({
                 key={key}
                 title={emojify(text)}
                 style={style}
-                titleBackground='#11DDCC'
+                titleBackground={itemBackgroundColor}
               />
             )}
           </GridList>
@@ -60,19 +37,17 @@ const Demo = ({
       </TransitionMotion>
     </section>
 
-    <div style={formStyle}>
-      <div style={{width: '40%', margin: '0 auto'}}>
-        <form onSubmit={onSubmit}>
-          <input
-            className="foo"
-            autoFocus={true}
-            placeholder="Type :100: or :)"
-            value={value}
-            onChange={onInputChange}
-            type="text"
-          />
-        </form>
-      </div>
+    <div className="form-container">
+      <form onSubmit={onSubmit} className="form">
+        <input
+          className="text-input"
+          autoFocus={true}
+          placeholder="Type :100: or :)"
+          value={value}
+          onChange={onInputChange}
+          type="text"
+        />
+      </form>
     </div>
   </section>
 )
