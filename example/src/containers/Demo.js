@@ -34,7 +34,13 @@ export default compose(
       props.setValue('')
     },
     getDefaultStyles: props => () => (
-      props.items.map(item => ({...item, style: {height: -500, opacity: 10}}))
+      props.items.map(item => ({
+        ...item,
+        style: {
+          height: -500,
+          opacity: 10
+        }
+      }))
     ),
     getStyles: ({ items }) => () => (
       items.map((item, i) => ({
