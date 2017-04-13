@@ -1,6 +1,7 @@
 body {
-  background: #7DBFD9;
-  font-family: 'Roboto', sans-serif;
+  /* font-family: 'Roboto', sans-serif; */
+  font-family: 'Bungee Hairline', cursive;
+  background-color: #F5F5F5;
 }
 
 h1 {
@@ -32,8 +33,33 @@ h1 {
   to { transform: rotate(360deg); }
 }
 
-.main {
-  display: flex;          /* 2 */
-  justify-content: center;/* 3 */
-  align-items: center;    /* 4 */
+/* .main { */
+  /* display: flex;          [> 2 <] */
+  /* justify-content: center;[> 3 <] */
+  /* align-items: center;    [> 4 <] */
+/* } */
+
+/* .baz { */
+/* } */
+
+.foo {
+/* position: relative; */
+margin: 100px 0;
+width: 70%;
+/* font-size: 24px; */
+/* font-family: inherit; */
+/* font-weight: inherit; */
+/* line-height: 1.4em; */
+/* border: 0; */
+/* color: inherit; */
+padding: 6px;
+/* box-shadow: inset 0 -1px 5px 0 rgba(0, 0, 0, 0.2); */
+/* box-sizing: border-box; */
+  border: 1px #B8B8B8 solid;
+  background-color: #fff;
+}
+
+input[type="text"]:focus {
+  outline: 0;
+  border-color: #999999;
 }
