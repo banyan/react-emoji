@@ -27,7 +27,14 @@ const styles = {
   },
 }
 
-const Demo = ({ value, onInputChange, onSubmit, getDefaultStyles, getStyles, willEnter }) => (
+const Demo = ({
+  value,
+  onInputChange,
+  onSubmit,
+  getDefaultStyles,
+  getStyles,
+  willEnter
+}) => (
   <section style={styles.root}>
     <section style={styles.foo}>
       <TransitionMotion
