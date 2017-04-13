@@ -1,5 +1,6 @@
 body {
-  /* font-family: 'Roboto', sans-serif; */
+  margin: 0;
+  padding: 0;
   font-family: 'Bungee Hairline', cursive;
   background-color: #F5F5F5;
 }
