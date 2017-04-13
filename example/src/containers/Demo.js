@@ -3,7 +3,7 @@ import {TransitionMotion, spring, presets} from 'react-motion'
 
 import Demo from '../components/Demo'
 
-const defaultTodos =  [
+const defaultItems =  [
   {key: 't1',  data: {text: ':100:'}},
   {key: 't2',  data: {text: ':smile:'}},
   {key: 't3',  data: {text: 'Try to finish conference slides'}},
@@ -18,7 +18,7 @@ const defaultTodos =  [
 ]
 
 export default compose(
-  withState('todos', 'setTodos', defaultTodos),
+  withState('items', 'setItems', defaultItems),
   withState('value', 'setValue', ''),
   withHandlers({
     onInputChange: props => ({target: {value}}) => {
@@ -30,15 +30,15 @@ export default compose(
         key: 't' + Date.now(),
         data: { text: props.value },
       }
-      props.setTodos([ newItem, ...props.todos ])
+      props.setItems([ newItem, ...props.items ])
       props.setValue('')
     },
     getDefaultStyles: props => () => (
-      props.todos.map(todo => ({...todo, style: {height: -500, opacity: 10}}))
+      props.items.map(item => ({...item, style: {height: -500, opacity: 10}}))
     ),
-    getStyles: ({ todos }) => () => (
-      todos.map((todo, i) => ({
-        ...todo,
+    getStyles: ({ items }) => () => (
+      items.map((item, i) => ({
+        ...item,
         style: {
           height: spring(60, presets.gentle),
           opacity: spring(1, presets.gentle),
