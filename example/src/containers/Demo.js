@@ -1,5 +1,5 @@
-import { withHandlers, withState, withProps, compose, lifecycle } from 'recompose'
-import {TransitionMotion, spring, presets} from 'react-motion'
+import { withHandlers, withState, withProps, compose } from 'recompose'
+import { spring, presets } from 'react-motion'
 
 import Demo from '../components/Demo'
 
