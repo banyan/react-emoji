@@ -27,53 +27,47 @@ const styles = {
   },
 }
 
-const Demo = React.createClass({
-  render() {
-    const { value, onInputChange, onSubmit, getDefaultStyles, getStyles, willEnter } = this.props
-
-    return (
-      <section style={styles.root}>
-        <section style={styles.foo}>
-          <TransitionMotion
-            defaultStyles={getDefaultStyles()}
-            styles={getStyles()}
-            willEnter={willEnter}>
-            {styles =>
-              <GridList
-                cellHeight={70}
-                style={styles.gridList}
-                cols={1}
-              >
-                {styles.map(({key, style, data: {isDone, text}}) =>
-                  <GridTile
-                    key={key}
-                    title={emojify(text)}
-                    style={style}
-                    titleBackground='#11DDCC'
-                  />
-                )}
-              </GridList>
-            }
-          </TransitionMotion>
-        </section>
-
-        <div style={formStyle}>
-          <div style={{width: '40%', margin: '0 auto'}}>
-            <form onSubmit={onSubmit}>
-              <input
-                className="foo"
-                autoFocus={true}
-                placeholder="Type :100: or :)"
-                value={value}
-                onChange={onInputChange}
-                type="text"
+const Demo = ({ value, onInputChange, onSubmit, getDefaultStyles, getStyles, willEnter }) => (
+  <section style={styles.root}>
+    <section style={styles.foo}>
+      <TransitionMotion
+        defaultStyles={getDefaultStyles()}
+        styles={getStyles()}
+        willEnter={willEnter}>
+        {styles =>
+          <GridList
+            cellHeight={70}
+            style={styles.gridList}
+            cols={1}
+          >
+            {styles.map(({key, style, data: {text}}) =>
+              <GridTile
+                key={key}
+                title={emojify(text)}
+                style={style}
+                titleBackground='#11DDCC'
               />
-            </form>
-          </div>
-        </div>
-      </section>
-    )
-  },
-})
+            )}
+          </GridList>
+        }
+      </TransitionMotion>
+    </section>
+
+    <div style={formStyle}>
+      <div style={{width: '40%', margin: '0 auto'}}>
+        <form onSubmit={onSubmit}>
+          <input
+            className="foo"
+            autoFocus={true}
+            placeholder="Type :100: or :)"
+            value={value}
+            onChange={onInputChange}
+            type="text"
+          />
+        </form>
+      </div>
+    </div>
+  </section>
+)
 
 export default Demo
