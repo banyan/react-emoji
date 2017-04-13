@@ -1,11 +1,7 @@
 import React from 'react'
 
 import {GridList, GridTile} from 'material-ui/GridList'
-import IconButton from 'material-ui/IconButton'
-import Subheader from 'material-ui/Subheader'
-import StarBorder from 'material-ui/svg-icons/toggle/star-border'
-import TextField from 'material-ui/TextField'
-import ReactEmoji, { emojify } from 'react-emoji'
+import { emojify } from 'react-emoji'
 
 import {TransitionMotion, spring, presets} from 'react-motion'
 
@@ -75,7 +71,7 @@ const Demo = React.createClass({
   },
 
   getStyles() {
-    const {todos, value, selected} = this.state
+    const { todos } = this.state
     return todos.map((todo, i) => {
       return {
         ...todo,
@@ -102,7 +98,7 @@ const Demo = React.createClass({
   },
 
   render() {
-    const {todos, value, selected} = this.state
+    const { value } = this.state
 
     return (
       <section style={styles.root}>
