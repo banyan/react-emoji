@@ -28,48 +28,29 @@ const styles = {
 }
 
 const Demo = React.createClass({
-  getInitialState() {
-    return {
-      todos: [
-        {key: 't1', data: {text: ':100:'}},
-        {key: 't2', data: {text: ':smile:'}},
-        {key: 't3', data: {text: 'Try to finish conference slides'}},
-        {key: 't4', data: {text: 'Eat cheese and drink wine'}},
-        {key: 't5', data: {text: 'Go around in Uber'}},
-        {key: 't6', data: {text: 'Try to finish conference slides'}},
-        {key: 't7', data: {text: 'Eat cheese and drink wine'}},
-        {key: 't8', data: {text: 'Go around in Uber'}},
-        {key: 't9', data: {text: 'Try to finish conference slides'}},
-        {key: 't10', data: {text: 'Eat cheese and drink wine'}},
-        {key: 't11', data: {text: 'Go around in Uber'}},
-      ],
-      value: '',
-      selected: 'all',
-    }
-  },
-
-  // logic from todo, unrelated to animation
   handleChange({target: {value}}) {
-    this.setState({value})
+    this.props.setValue(value)
   },
 
   handleSubmit(e) {
     e.preventDefault()
+
     const newItem = {
       key: 't' + Date.now(),
-      data: { text: this.state.value },
+      data: { text: this.props.value },
     }
 
-    this.setState({todos: [newItem].concat(this.state.todos)});
+    // this.setState({todos: [newItem].concat(this.state.todos)});
+    this.props.setTodos([newItem].concat(this.props.todos))
   },
 
   // actual animation-related logic
   getDefaultStyles() {
-    return this.state.todos.map(todo => ({...todo, style: {height: -100, opacity: 1}}))
+    return this.props.todos.map(todo => ({...todo, style: {height: -500, opacity: 1}}))
   },
 
   getStyles() {
-    const { todos } = this.state
+    const { todos } = this.props
     return todos.map((todo, i) => {
       return {
         ...todo,
@@ -96,7 +77,10 @@ const Demo = React.createClass({
   },
 
   render() {
-    const { value } = this.state
+    const { value } = this.props
+
+    console.log('this.state: ', this.state)
+    console.log('this.props: ', this.props)
 
     return (
       <section style={styles.root}>
