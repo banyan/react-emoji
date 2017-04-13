@@ -1,8 +1,6 @@
 import React from 'react'
-
 import {GridList, GridTile} from 'material-ui/GridList'
 import { emojify } from 'react-emoji'
-
 import {TransitionMotion, spring, presets} from 'react-motion'
 
 const formStyle = {
