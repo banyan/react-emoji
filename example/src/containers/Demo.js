@@ -3,18 +3,23 @@ import { spring, presets } from 'react-motion'
 
 import Demo from '../components/Demo'
 
-const defaultItems =  [
-  {key: 't1',  data: {text: ':100: :100: :100:'}},
-  {key: 't2',  data: {text: ':smile:'}},
-  {key: 't3',  data: {text: ':)'}},
-  {key: 't4',  data: {text: 'Eat cheese and drink wine'}},
+const getRandomArrow = () => {
+  const arrows = ['right', 'left']
+  return arrows[Math.floor(Math.random() * 2)]
+}
+
+
+const defaultItems = [
+  { key: 't1', data: { text: ':100: :100: :100:', arrowOrder: getRandomArrow() } },
+  { key: 't2', data: { text: ':smile:', arrowOrder: getRandomArrow() } },
+  { key: 't3', data: { text: ':)', arrowOrder: getRandomArrow() } },
 ]
 
 export default compose(
   withState('items', 'setItems', defaultItems),
   withState('value', 'setValue', ''),
   withHandlers({
-    onInputChange: props => ({target: {value}}) => {
+    onInputChange: props => ({ target: { value } }) => {
       props.setValue(value)
     },
     onSubmit: props => event => {
@@ -23,9 +28,9 @@ export default compose(
       if (!value) return
       const newItem = {
         key: 't' + Date.now(),
-        data: { text: value },
+        data: { text: value, arrowOrder: getRandomArrow() },
       }
-      props.setItems([ newItem, ...items ])
+      props.setItems([newItem, ...items])
       props.setValue('')
     },
     getDefaultStyles: props => () => (
@@ -41,7 +46,7 @@ export default compose(
       items.map((item) => ({
         ...item,
         style: {
-          height: spring(60, presets.gentle),
+          height: spring(100, presets.gentle),
           opacity: spring(1, presets.gentle),
         }
       }))
