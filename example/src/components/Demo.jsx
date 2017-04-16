@@ -13,30 +13,21 @@ const Demo = ({
   getStyles,
   willEnter,
   settings,
-}) => {
-  console.log('settings: ', settings)
-
-  return <section className="list-container">
+}) => (
+  <section className="list-container">
     <section className="list">
       <TransitionMotion
         defaultStyles={getDefaultStyles()}
         styles={getStyles()}
         willEnter={willEnter}>
         {styles =>
-          <GridList
-            cellHeight={70}
-            cols={1}
-          >
+          <div>
             {styles.map(({key, style, data: {text}}) =>
-              <GridTile
-                key={key}
-                title={emojify(text, settings)}
-                style={style}
-                className="foo"
-                titleBackground={itemBackgroundColor}
-              />
+              <div key={key}>
+                {emojify(text, settings)}
+              </div>
             )}
-          </GridList>
+          </div>
         }
       </TransitionMotion>
     </section>
@@ -54,6 +45,6 @@ const Demo = ({
       </form>
     </div>
   </section>
-}
+)
 
 export default Demo

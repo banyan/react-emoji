@@ -1,7 +1,6 @@
 body {
   margin: 0;
   padding: 0;
-  /* font-family: 'Bungee Hairline', cursive; */
   font-family: 'Ubuntu', sans-serif;
   background-color: #F5F5F5;
 }
@@ -53,12 +52,6 @@ input[type="text"] {
 input[type="text"]:focus {
   outline: 0;
   border-color: #999999;
-}
-
-.foo img {
-  position: absolute;
-  left: 0;
-  bottom: 0;
 }
 
 input::-webkit-input-placeholder {

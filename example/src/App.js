@@ -6,7 +6,7 @@ import Drawer from 'material-ui/Drawer'
 import Subheader from 'material-ui/Subheader'
 import Toggle from 'material-ui/Toggle'
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton'
-import {List, ListItem} from 'material-ui/List';
+import {List, ListItem} from 'material-ui/List'
 
 import './App.css'
 import Demo from './containers/Demo'
