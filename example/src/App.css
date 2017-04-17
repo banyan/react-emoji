@@ -56,28 +56,38 @@ h1 {
 }
 
 .balloon {
-  background-color: #fff;
-  padding: 20px;
-  position: relative;
+    background-color: #fff;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    padding: 20px;
+    position: relative;
 }
 
 .balloon:after {
-  border-top: 12px solid transparent;
-  border-bottom: 12px solid transparent;
-  content: '';
-  margin-top: -10px;
-  position: absolute;
-  top: 50%;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    content: '';
+    margin-top: -10px;
+    position: absolute;
+    top: 50%;
 }
 
 .balloon-right::after {
-  border-left: 12px solid #fff;
-  right: -12px;
+    border-left: 12px solid #fff;
+    right: -12px;
 }
 
 .balloon-left::after {
-  border-right: 12px solid #fff;
-  left: -12px;
+    border-right: 12px solid #fff;
+    left: -12px;
+}
+
+.balloon span {
+  line-height: 20px;
+}
+
+.balloon img {
+  vertical-align: bottom;
 }
 
 input[type="text"] {
@@ -102,4 +112,13 @@ input::-moz-placeholder {
 input::input-placeholder {
     font-weight: 300;
     color: #e6e6e6;
+}
+
+@media (max-width: 600px) {
+    .list {
+        width: 90%;
+    }
+    .form {
+        width: 80%;
+    }
 }

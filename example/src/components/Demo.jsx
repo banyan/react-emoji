@@ -1,6 +1,6 @@
 import React from 'react'
 import { GridList, GridTile } from 'material-ui/GridList'
-import { emojify } from 'react-emoji'
+import ReactEmoji from 'react-emoji'
 import { TransitionMotion } from 'react-motion'
 
 const itemBackgroundColor = '#11DDCC'
@@ -42,7 +42,12 @@ const Demo = ({
                 >
                   <div className="foo">
                     <div className={`balloon balloon-${arrowOrder}`}>
-                      {emojify(text, settings)}
+                      <ReactEmoji
+                        {...settings}
+                        className="bar"
+                      >
+                      {text}
+                      </ReactEmoji>
                     </div>
                   </div>
                 </div>

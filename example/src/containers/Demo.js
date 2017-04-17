@@ -10,7 +10,7 @@ const getRandomArrow = () => {
 
 
 const defaultItems = [
-  { key: 't1', data: { text: ':100: :100: :100:', arrowOrder: getRandomArrow() } },
+  { key: 't1', data: { text: 'hello :100: :100: :100:', arrowOrder: getRandomArrow() } },
   { key: 't2', data: { text: ':smile:', arrowOrder: getRandomArrow() } },
   { key: 't3', data: { text: ':)', arrowOrder: getRandomArrow() } },
 ]
