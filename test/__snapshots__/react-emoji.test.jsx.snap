@@ -205,6 +205,31 @@ exports[`renders :smile: annotation with ReactEmoji 1`] = `
 </ReactEmoji>
 `;
 
+exports[`renders custom emoji 1`] = `
+<SampleComponent
+  options={
+    Object {
+      "customDict": Object {
+        "batman": "https://my.custom.server.com/batman.jpg",
+      },
+    }
+  }
+  text="foo :batman: bar"
+>
+  <div>
+    <span>
+      foo 
+      <img
+        height="20px"
+        src="https://my.custom.server.com/batman.jpg"
+        width="20px"
+      />
+       bar
+    </span>
+  </div>
+</SampleComponent>
+`;
+
 exports[`renders multiple emoticon and annotation 1`] = `
 <SampleComponent
   options={Object {}}
@@ -224,25 +249,6 @@ exports[`renders multiple emoticon and annotation 1`] = `
         src="https://twemoji.maxcdn.com/svg/1f61e.svg"
         width="20px"
       />
-    </span>
-  </div>
-</SampleComponent>
-`;
-
-exports[`renders custom emoji 1`] = `
-<SampleComponent
-  options={Object {}}
-  text="foo :smile: :("
->
-  <div>
-    <span>
-      foo
-      <img
-        height="20px"
-        src="https://my.custom.server.com/batman.jpg"
-        width="20px"
-      />
-      bar
     </span>
   </div>
 </SampleComponent>
