@@ -229,6 +229,25 @@ exports[`renders multiple emoticon and annotation 1`] = `
 </SampleComponent>
 `;
 
+exports[`renders custom emoji 1`] = `
+<SampleComponent
+  options={Object {}}
+  text="foo :smile: :("
+>
+  <div>
+    <span>
+      foo
+      <img
+        height="20px"
+        src="https://my.custom.server.com/batman.jpg"
+        width="20px"
+      />
+      bar
+    </span>
+  </div>
+</SampleComponent>
+`;
+
 exports[`uses emojione's emoji 1`] = `
 <SampleComponent
   options={
