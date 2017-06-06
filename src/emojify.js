@@ -20,29 +20,45 @@ const buildOptions = options => ({
     width: '20px',
     height: '20px',
     ...options.attributes
-  }
+  },
+  customDict: options.customDict || {}
 })
 
 // Use negated lookahead for `:/`, refs: https://github.com/banyan/react-emoji/issues/1
 const specialEmoticons = { ':/': '1f615' }
 const specialEmoticonsRegex = '\\:\\/(?!\\/)'
 
-const emojiWithEmoticons = {
-  delimiter: new RegExp(`(:(?:${getEscapedKeys(annotations)}):|${getEscapedKeys(emoticons)}|${specialEmoticonsRegex})`, 'g'),
-  dict: {
+const emojiWithEmoticons = (customDict) => {
+  const annotationsPlusCustom = {
     ...annotations,
-    ...emoticons,
-    ...specialEmoticons,
+    ...customDict
+  }
+  return {
+    delimiter: new RegExp(`(:(?:${getEscapedKeys(annotationsPlusCustom)}):|${getEscapedKeys(emoticons)}|${specialEmoticonsRegex})`, 'g'),
+    dict: {
+      ...annotationsPlusCustom,
+      ...emoticons,
+      ...specialEmoticons
+    }
   }
 }
 
-const emojiWithoutEmoticons = {
-  delimiter: new RegExp(`(:(?:${getEscapedKeys(annotations)}):)`, 'g'),
-  dict: annotations,
+const emojiWithoutEmoticons = (customDict) => {
+  const annotationsPlusCustom = {
+    ...annotations,
+    ...customDict
+  }
+  return {
+    delimiter: new RegExp(`(:(?:${getEscapedKeys(annotationsPlusCustom)}):)`, 'g'),
+    dict: annotationsPlusCustom
+  }
 }
 
 const buildImageUrl = (hex, options) => {
-  if (options.host) {
+  if (hex.startsWith('http')) {
+    // came as a URL from a custom dictionary
+    return hex
+  } else if (options.host) {
     return compact([options.host, options.path, `${hex}.${options.ext}`]).join('/')
   } else if (options.emojiType === 'twemoji') {
     return `https://twemoji.maxcdn.com/${options.ext}/${hex}.${options.ext}`
@@ -60,7 +76,7 @@ const getKey = (key) => {
 }
 
 const emojifyTextToSingleEmoji = (text, options) => {
-  const { dict } = options.useEmoticon ? emojiWithEmoticons : emojiWithoutEmoticons
+  const { dict } = options.useEmoticon ? emojiWithEmoticons(options.customDict) : emojiWithoutEmoticons(options.customDict)
   const hex = dict[getKey(text)]
   if (!!options.strict && !hex) throw new Error(`Could not find emoji: ${text}.`)
   if (!hex) return text
@@ -74,7 +90,7 @@ const emojifyTextToSingleEmoji = (text, options) => {
 }
 
 const emojifyText = (text, options) => {
-  const { delimiter, dict } = options.useEmoticon ? emojiWithEmoticons : emojiWithoutEmoticons
+  const { delimiter, dict } = options.useEmoticon ? emojiWithEmoticons(options.customDict) : emojiWithoutEmoticons(options.customDict)
   return compact(
     text.split(delimiter).map((word, index) => {
       const match = word.match(delimiter)
