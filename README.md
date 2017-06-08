@@ -7,8 +7,9 @@
 
 ## Features
 
-* Switchble emoji assets ([twemoji](https://github.com/twitter/twemoji) or [Emoji One](https://github.com/Ranks/emojione))
+* Switchable emoji assets ([twemoji](https://github.com/twitter/twemoji) or [Emoji One](https://github.com/Ranks/emojione))
 * Supports emoticons such as `:) :(`
+* Custom emoji dictionary can be given, pointing to image URLs
 
 ## Compatible React Versions
 
@@ -69,6 +70,7 @@ ext | asset ext. svg or png are available | svg | String
 attributes | Attributes such as className or onClick | {width: '20px', height: '20px'} | Object
 singleEmoji | Show single emoji (either of annotation or emoticon), use this option if input is limited to render single emoji, this is slightly faster | false | Boolean
 strict | Throw an error if annotation is not in dict, it's handy if emoji input is not from end user | false | Boolean
+customDict | Object to use as custom emoji dictionary. Values are image URLs for each key. | {} | Object
 
 ## Tips
 
