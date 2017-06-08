@@ -1,5 +1,5 @@
 import React from 'react'
-import { emojify } from './index'
+import emojify from './emojify'
 
 const isString = (obj) => typeof(obj) === 'string'
 

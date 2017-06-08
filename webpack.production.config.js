@@ -4,7 +4,7 @@ var webpack = require('webpack');
  * This is the Webpack configuration file for production.
  */
 module.exports = {
-  entry: "./src/react-emoji",
+  entry: "./src/index.js",
 
   output: {
     library: 'ReactEmoji',
@@ -25,9 +25,13 @@ module.exports = {
   ],
 
   module: {
-    loaders: [
-      { test: /\.jsx?$/, exclude: /node_modules/, loader: "babel-loader" }
-    ]
+    loaders: [{
+      exclude: /node_modules/,
+      loader: 'babel',
+      query: {
+        presets: ['react', 'es2015', 'stage-1']
+      }
+    }]
   },
 
   resolve: {
