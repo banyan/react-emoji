@@ -260,4 +260,19 @@ describe('emojify', () => {
       expect(wrapper).toMatchSnapshot('renders multiple emoticon and annotation')
     })
   })
+
+  context('custom emoji', () => {
+    it('renders from custom dictionary', () => {
+      const customDict = {
+        batman: "https://my.custom.server.com/batman.jpg"
+      };
+      const wrapper = mount(
+        <SampleComponent
+          text="foo :batman: bar"
+          options={{ customDict: customDict }}
+        />,
+      )
+      expect(wrapper).toMatchSnapshot('renders custom emoji')
+    })
+  })
 })
